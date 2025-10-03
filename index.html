@@ -11,6 +11,8 @@
             background-color: #343a40;
             color: #f8f9fa;
             font-family: Arial, sans-serif;
+            margin: 0;
+            overflow: hidden; /* Prevents scrollbars */
         }
         h1, h2 {
             color: #f8f9fa;
@@ -29,10 +31,16 @@
             padding: 20px 0;
             text-align: center;
         }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.8); /* Dark background */
+        }
     </style>
 </head>
 <body>
-
+<canvas id="canvas"></canvas>
     <div class="container text-center mt-5">
         <h1>projects</h1>
         <p class="lead">beckerist bits and bobs</p>
@@ -66,12 +74,132 @@
                 </div>
             </div>
         </div>
-
-        <footer>
-            <p></p>
-        </footer>
     </div>
+<script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
 
+        // Set canvas size
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const circles = [];
+        const gravity = 0.1; // Gravity strength
+
+        class Circle {
+            constructor(x, y, radius) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.dy = 0; // Vertical speed
+                this.color = this.getRandomColor();
+            }
+
+            getRandomColor() {
+                const r = Math.floor(Math.random() * 256);
+                const g = Math.floor(Math.random() * 256);
+                const b = Math.floor(Math.random() * 256);
+                return 'rgba(${r}, ${g}, ${b}, 0.7)'; // Light colors
+            }
+
+            update(mouseX, mouseY) {
+                this.dy += gravity; // Apply gravity
+                this.y += this.dy; // Move the circle down
+
+                // Calculate distance from the mouse
+                const distX = this.x - mouseX;
+                const distY = this.y - mouseY;
+                const dist = Math.sqrt(distX ** 2 + distY ** 2);
+
+                // Move away from the mouse
+                if (dist < 100) {
+                    this.x += (distX / dist) * 3; // Move away on X
+                    this.y += (distY / dist) * 3; // Move away on Y
+                }
+
+                // Bounce off the edges
+                if (this.y + this.radius > canvas.height) {
+                    this.y = canvas.height - this.radius;
+                    this.dy *= -0.9; // Reverse and reduce speed
+                }
+                if (this.y - this.radius < 0) {
+                    this.y = this.radius;
+                    this.dy *= -0.9; // Reverse and reduce speed
+                }
+                if (this.x + this.radius > canvas.width) {
+                    this.x = canvas.width - this.radius;
+                    this.dy *= -0.9; // Reverse X direction
+                }
+                if (this.x - this.radius < 0) {
+                    this.x = this.radius;
+                    this.dy *= -0.9; // Reverse X direction
+                }
+            }
+            
+            collide(otherCircle) {
+                const distX = this.x - otherCircle.x;
+                const distY = this.y - otherCircle.y;
+                const distance = Math.sqrt(distX ** 2 + distY ** 2);
+
+                if (distance < this.radius + otherCircle.radius) {
+                    // Simple bounce effect
+                    const angle = Math.atan2(distY, distX);
+                    const totalMass = this.radius + otherCircle.radius;
+
+                    // Update positions
+                    this.x -= Math.cos(angle) * (this.radius + otherCircle.radius - distance) / 2;
+                    otherCircle.x += Math.cos(angle) * (this.radius + otherCircle.radius - distance) / 2;
+
+                    // Update vertical speeds for a bounce effect
+                    this.dy *= -0.5;
+                    otherCircle.dy *= -0.5;
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+
+        function createCircle(x, y) {
+            const radius = Math.random() * 20 + 40; // Random radius
+            circles.push(new Circle(x, y, radius));
+        }
+
+        function animate(mouseX, mouseY) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+            for (const circle of circles) {
+                circle.update(mouseX, mouseY);
+                circle.draw();
+            }
+            requestAnimationFrame(() => animate(mouseX, mouseY)); // Loop the animation
+        }
+
+        // Mouse click event to create circles
+        canvas.addEventListener('click', (event) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            createCircle(x, y);
+        });
+
+        // Mouse move event to track the cursor position
+        let mouseX = 0;
+        let mouseY = 0;
+
+        canvas.addEventListener('mousemove', (event) => {
+            const rect = canvas.getBoundingClientRect();
+            mouseX = event.clientX - rect.left;
+            mouseY = event.clientY - rect.top;
+        });
+
+        // Start the animation loop
+        animate(mouseX, mouseY);
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
