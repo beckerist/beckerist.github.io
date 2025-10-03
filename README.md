@@ -1,1 +1,0 @@
-# beckerist.github.io
