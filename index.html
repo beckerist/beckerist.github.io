@@ -82,7 +82,7 @@
         canvas.height = window.innerHeight;
 
         const circles = [];
-        const gravity = 0.1; // Gravity strength
+        const gravity = 10; // Gravity strength
 
         class Circle {
             constructor(x, y, radius) {
@@ -95,9 +95,9 @@
 
             getRandomColor() {
                 // Generate random RGB values
-                let r = Math.floor(Math.random() * 64); // 0-63
-                let g = Math.floor(Math.random() * 64); // 0-63
-                let b = Math.floor(Math.random() * 64); // 0-63
+                let r = Math.floor(Math.random() * 64 + 128); // 0-63 + 128 = Lighter than dark
+                let g = Math.floor(Math.random() * 64 + 128);
+                let b = Math.floor(Math.random() * 64 + 128);
 
                 // Convert RGB to hex
                 let color = '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
