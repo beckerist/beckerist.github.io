@@ -22,10 +22,12 @@
         .project-card {
             border: none;
             border-radius: 5px;
+            background-color: rgba(255, 180, 180, 0.8);
         }
         .project-card:hover {
             transform: scale(1.05);
             transition: transform 0.3s ease;
+            background-color: rgba(180, 180, 255, 0.8);
         }
         footer {
             margin-top: 20px;
@@ -82,7 +84,7 @@
         canvas.height = window.innerHeight;
 
         const circles = [];
-        const gravity = 10; // Gravity strength
+        const gravity = 0.1; // Gravity strength
 
         class Circle {
             constructor(x, y, radius) {
