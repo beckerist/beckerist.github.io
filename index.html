@@ -10,7 +10,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            overflow: hidden; /* Prevents scrollbars */
+            overflow: hidden; /* Prevent scrollbars */
             background-color: rgba(2, 1, 65, 0.8);
         }
         div {
@@ -43,9 +43,10 @@
 </head>
 <body>
 <canvas id="canvas"></canvas>
-<div class="container text-center mt-5" id="closeme" onclick="closeDiv()">
+<div class="container text-center mt-5">
     <h1>projects</h1>
-    <div class="row mt-4">
+    <h4 onclick="closeDiv()">toggle links</h4>
+    <div class="row mt-4" id="closeme">
         <div class="col-md-4">
             <div class="card project-card mb-4">
                 <div class="card-body">
@@ -78,7 +79,12 @@
 <script>
     function closeDiv() {
         const closeme = document.getElementById('closeme');
-        closeme.style.display = 'none'; // Hides the div
+        if (closeme.style.display === 'none' || closeme.style.display === '') {
+            closeme.style.display = 'block';
+        }
+        else {
+            closeme.style.display = 'none';
+        }
     }
 </script>
 <script>
