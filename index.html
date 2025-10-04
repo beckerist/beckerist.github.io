@@ -32,15 +32,20 @@
             top: 0;
             left: 0;
         }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #333;
+        }
     </style>
 </head>
 <body>
 <canvas id="canvas"></canvas>
-<div class="container text-center mt-5">
+<div class="container text-center mt-5" id="closeme" onclick="closeDiv()">
     <h1>projects</h1>
-    <h6>(touch me)</h6>      
-    <div class="row mt-4 closeme">
-        <span class="close-btn" style="cursor: pointer;">&times;</span>
+    <div class="row mt-4">
         <div class="col-md-4">
             <div class="card project-card mb-4">
                 <div class="card-body">
@@ -71,11 +76,12 @@
     </div>
 </div>
 <script>
-        $(document).ready(function() {
-            $('.close-btn').click(function() {
-                $(this).parent('.closeme').hide(); // Hides the main div
-            });
-        });
+    function closeDiv() {
+        const closeme = document.getElementById('closeme');
+        closeme.style.display = 'none'; // Hides the div
+    }
+</script>
+<script>
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
 
@@ -98,8 +104,8 @@
             getRandomColor() {
                 // Generate random RGB values
                 let r = Math.floor(Math.random() * 128); // Darker than light (blacker than red)
-                let g = Math.floor(Math.random() * 256); // Anything
-                let b = Math.floor(Math.random() * 128 + 128); // +128 = Lighter than dark
+                let g = Math.floor(Math.random() * 256); // Any shade of green
+                let b = Math.floor(Math.random() * 128 + 128); // +128 = Lighter than dark for blue
 
                 // Convert RGB to hex
                 let color = '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
