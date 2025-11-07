@@ -10,9 +10,9 @@ let mouseY = 0;
 let mouseX = 0;
 // Slingshot dimensions
 const slingshotBaseX = canvas.width / 2;
-const slingshotBaseY = canvas.height - 80; // Slingshot at the bottom
-const ballRadius = 20;
-let ballY = slingshotBaseY - 50; // Start directly below the string
+const slingshotBaseY = canvas.height - 120; // Slingshot at the bottom
+const ballRadius = 30;
+let ballY = slingshotBaseY - 30; // Start directly at the string
 let ballX = slingshotBaseX;
 let ballVelocityY = 0;
 let ballVelocityX = 0;
@@ -21,33 +21,61 @@ let gravity = 0.5; // Gravity force
 function drawSlingshot() {
     // Draw the slingshot's Y shape
     ctx.beginPath();
-    ctx.moveTo(slingshotBaseX - 30, slingshotBaseY); // Base left
-    ctx.lineTo(slingshotBaseX, slingshotBaseY + 50); // Bottom middle (hold)
-    ctx.lineTo(slingshotBaseX + 30, slingshotBaseY); // Base right
+    ctx.moveTo(slingshotBaseX - 50, slingshotBaseY - 35); // Base left
+    ctx.lineTo(slingshotBaseX, slingshotBaseY + 40); // Bottom middle
+    ctx.lineTo(slingshotBaseX + 50, slingshotBaseY - 35); // Base right
     ctx.strokeStyle = '#343a40';
-    ctx.lineWidth = 5;
+    ctx.lineWidth = 15;
     ctx.stroke();
 
-    // Draw the horizontal string in brown
+    // Draw the bottom line of the slingshot
+    ctx.beginPath();
+    ctx.moveTo(slingshotBaseX, slingshotBaseY + 40); // Straight down
+    ctx.lineTo(slingshotBaseX, slingshotBaseY + 70); // Bottom middle
+    ctx.strokeStyle = '#123456';
+    ctx.lineWidth = 20;
+    ctx.stroke();
+
+    // Draw the horizontal string
     ctx.beginPath();
     ctx.moveTo(slingshotBaseX - 50, slingshotBaseY - 30); // Left end of the string
     ctx.lineTo(slingshotBaseX + 50, slingshotBaseY - 30); // Right end of the string
     ctx.strokeStyle = 'brown';
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 10;
     ctx.stroke();
 }
 
 function drawBall() {
     ctx.beginPath();
     ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
-    ctx.fillStyle = '#007bff';
+    ctx.fillStyle = '#cc8500';
     ctx.fill();
     ctx.closePath();
 }
 
+function drawButton() {
+            const buttonX = 150;
+            const buttonY = 180;
+            const buttonWidth = 100;
+            const buttonHeight = 50;
+
+            // Button Background
+            ctx.fillStyle = '#4CAF50'; // Green color
+            ctx.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
+            ctx.strokeStyle = '#FFFFFF'; // White border
+            ctx.strokeRect(buttonX, buttonY, buttonWidth, buttonHeight);
+            
+            // Button Text
+            ctx.fillStyle = '#FFFFFF'; // White text color
+            ctx.font = '20px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('Reset', buttonX + buttonWidth / 2, buttonY + buttonHeight / 2);
+        }
+
 function resetGame() {
-    ballY = slingshotBaseY - 50; // Reset directly under the string
-    ballX = slingshotBaseX;
+    drawSlingshot();
+    drawBall();
     ballVelocityY = 0;
     ballVelocityX = 0;
 }
@@ -56,6 +84,7 @@ function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawSlingshot();
     drawBall();
+   // drawButton();
 
     if (!isDragging) {
         if (ballVelocityY !== 0 || ballX !== slingshotBaseX) {
@@ -88,7 +117,7 @@ function update() {
             }
         }
     } else {
-        ballY = Math.min(mouseY, slingshotBaseY - 50); // Center the ball with respect to the string
+        ballY = Math.min(mouseY, slingshotBaseY + 50); // Make sure the ball doesn't go off the bottom
         ballX = mouseX; // Follow X coordinate
     }
 
@@ -107,7 +136,7 @@ canvas.addEventListener('mouseup', () => {
     if (isDragging) {
         isDragging = false;
         const pullDistance = slingshotBaseY - mouseY;
-        ballVelocityY = -pullDistance / 8; // Higher fling
+        ballVelocityY = -pullDistance; // Higher fling
         ballVelocityX = (mouseX - slingshotBaseX) / 20; // Adjusted for smoother fling
     }
 });
@@ -144,8 +173,8 @@ canvas.addEventListener('touchend', () => {
     if (isDragging) {
         isDragging = false;
         const pullDistance = slingshotBaseY - mouseY;
-        ballVelocityY = -pullDistance / 8;
-        ballVelocityX = (mouseX - slingshotBaseX) / 20;
+        ballVelocityY = pullDistance / 8;
+        ballVelocityX = (mouseX + slingshotBaseX) / 20;
     }
 });
 
