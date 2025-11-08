@@ -80,7 +80,6 @@ function resetGame() {
     ballVelocityX = 0;
 }
 
-
 function update() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
