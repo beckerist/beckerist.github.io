@@ -92,7 +92,7 @@ function update() {
         if (ballVelocityY !== 0 || ballX !== slingshotBaseX) {
             ballVelocityY += gravity; // Gravity effect
             ballY += ballVelocityY; // Update Y position
-            ballX += ballVelocityX; // Update X position
+            ballX -= ballVelocityX; // Update X position
 
             // Check for bounce on ground
             if (ballY + ballRadius >= slingshotBaseY) {
@@ -120,7 +120,7 @@ function update() {
         }
     } else {
         ballY = Math.min(mouseY, slingshotBaseY + 50); // Make sure the ball doesn't go off the bottom
-        ballX = -mouseX; // Follow X coordinate
+        ballX = mouseX; // Follow X coordinate 
     }
 
     requestAnimationFrame(update);
