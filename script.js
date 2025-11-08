@@ -187,7 +187,7 @@ canvas.addEventListener('touchend', () => {
     }
 });
 
-window.addEventListener('resize', resizeCanvas);
+canvas.addEventListener('resize', resizeCanvas);
 
 // Start the animation loop
 update();
