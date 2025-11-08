@@ -24,7 +24,7 @@ function drawSlingshot() {
     ctx.moveTo(slingshotBaseX - 50, slingshotBaseY - 35); // Base left
     ctx.lineTo(slingshotBaseX, slingshotBaseY + 40); // Bottom middle
     ctx.lineTo(slingshotBaseX + 50, slingshotBaseY - 35); // Base right
-    ctx.strokeStyle = '#343a40';
+    ctx.strokeStyle = '#4d647ada';
     ctx.lineWidth = 15;
     ctx.stroke();
 
@@ -32,7 +32,7 @@ function drawSlingshot() {
     ctx.beginPath();
     ctx.moveTo(slingshotBaseX, slingshotBaseY + 40); // Straight down
     ctx.lineTo(slingshotBaseX, slingshotBaseY + 70); // Bottom middle
-    ctx.strokeStyle = '#123456';
+    ctx.strokeStyle = '#12345678';
     ctx.lineWidth = 20;
     ctx.stroke();
 
@@ -80,8 +80,17 @@ function resetGame() {
     ballVelocityX = 0;
 }
 
+function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.fillStyle = 'lightblue';
+      context.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+
 function update() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    resizeCanvas();
     drawSlingshot();
     drawBall();
    // drawButton();
@@ -177,6 +186,8 @@ canvas.addEventListener('touchend', () => {
         ballVelocityX = (mouseX + slingshotBaseX) / 20;
     }
 });
+
+window.addEventListener('resize', resizeCanvas);
 
 // Start the animation loop
 update();
