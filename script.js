@@ -75,7 +75,12 @@ function drawButton() {
         }
 
 function resetGame() {
-    update()
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawSlingshot();
+    drawBall();
+    drawButton();
 }
 
 function update() {
