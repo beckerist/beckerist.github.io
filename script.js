@@ -1,7 +1,7 @@
 // Existing Canvas and Context Initialization
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth - 150;
+canvas.width = 400;
 canvas.height = window.innerHeight - 150;
 
 // Variables
@@ -74,9 +74,7 @@ function drawButton() {
             ctx.fillText('Reset', buttonX + buttonWidth / 2, buttonY + buttonHeight / 2);
         }
 
-function resetGame() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+function resetGame() {a
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawSlingshot();
     drawBall();
