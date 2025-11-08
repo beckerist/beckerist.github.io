@@ -1,13 +1,14 @@
 // Existing Canvas and Context Initialization
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth - 50;
-canvas.height = window.innerHeight - 50;
+canvas.width = window.innerWidth - 150;
+canvas.height = window.innerHeight - 150;
 
 // Variables
 let isDragging = false;
 let mouseY = 0;
 let mouseX = 0;
+
 // Slingshot dimensions
 const slingshotBaseX = canvas.width / 2;
 const slingshotBaseY = canvas.height - 120; // Slingshot at the bottom
@@ -54,8 +55,8 @@ function drawBall() {
 }
 
 function drawButton() {
-            const buttonX = 150;
-            const buttonY = 180;
+            const buttonX = 0;
+            const buttonY = 50;
             const buttonWidth = 100;
             const buttonHeight = 50;
 
@@ -74,10 +75,7 @@ function drawButton() {
         }
 
 function resetGame() {
-    drawSlingshot();
-    drawBall();
-    ballVelocityY = 0;
-    ballVelocityX = 0;
+    update()
 }
 
 function update() {
