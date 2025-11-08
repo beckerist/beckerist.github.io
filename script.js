@@ -1,8 +1,8 @@
 // Existing Canvas and Context Initialization
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-canvas.width = 400;
-canvas.height = 600;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
 // Variables
 let isDragging = false;
