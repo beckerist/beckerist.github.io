@@ -84,7 +84,7 @@ function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawSlingshot();
     drawBall();
-   // drawButton();
+    drawButton();
 
     if (!isDragging) {
         if (ballVelocityY !== 0 || ballX !== slingshotBaseX) {
