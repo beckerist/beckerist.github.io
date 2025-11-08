@@ -80,17 +80,9 @@ function resetGame() {
     ballVelocityX = 0;
 }
 
-function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      context.fillStyle = 'lightblue';
-      context.fillRect(0, 0, canvas.width, canvas.height);
-    }
-
 
 function update() {
-    resizeCanvas();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawSlingshot();
     drawBall();
    // drawButton();
@@ -186,8 +178,6 @@ canvas.addEventListener('touchend', () => {
         ballVelocityX = (mouseX + slingshotBaseX) / 20;
     }
 });
-
-canvas.addEventListener('resize', resizeCanvas);
 
 // Start the animation loop
 update();
