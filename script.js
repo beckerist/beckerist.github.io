@@ -8,6 +8,7 @@ canvas.height = window.innerHeight - 150;
 let isDragging = false;
 let mouseY = 0;
 let mouseX = 0;
+let score = 0;
 
 // Slingshot dimensions
 const slingshotBaseX = canvas.width / 2;
@@ -98,10 +99,11 @@ function update() {
                 ballY = slingshotBaseY - ballRadius; // Prevent going below ground
                 ballVelocityY = -ballVelocityY * 0.6; // Bounce effect
                 if (Math.abs(ballVelocityY) < 1 && ballY === slingshotBaseY - ballRadius) {
-                    let ballY = slingshotBaseY - 30; // Start directly at the string
-                    let ballX = slingshotBaseX;
-                    let ballVelocityY = 0;
-                    let ballVelocityX = 0;
+                    ballY = slingshotBaseY - 30; // Start directly at the string
+                    ballX = slingshotBaseX;
+                    ballVelocityY = 0;
+                    ballVelocityX = 0;
+                    score++;
                     update(); // Reset after bounce
                 }
             }
