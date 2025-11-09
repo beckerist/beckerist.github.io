@@ -55,38 +55,51 @@ function drawBall() {
     ctx.closePath();
 }
 
-function drawButton() {
+function drawUI() {
+    // Reset Button
     const buttonX = 0;
-    const buttonY = 50;
+    const buttonY = 0;
     const buttonWidth = 100;
     const buttonHeight = 50;
-
-    // Button Background
     ctx.fillStyle = '#4CAF50'; // Green color
     ctx.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
     ctx.strokeStyle = '#FFFFFF'; // White border
     ctx.strokeRect(buttonX, buttonY, buttonWidth, buttonHeight);
-    
-    // Button Text
     ctx.fillStyle = '#FFFFFF'; // White text color
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('Reset', buttonX + buttonWidth / 2, buttonY + buttonHeight / 2);
+
+    // Score Board
+
+    const scoreX = 0;
+    const scoreY = 50;
+    const scoreWidth = 100;
+    const scoreHeight = 50;
+    ctx.fillStyle = '#4C5FA0'; // Blue
+    ctx.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
+    ctx.strokeStyle = '#FFFFFF'; // White border
+    ctx.strokeRect(buttonX, buttonY, buttonWidth, buttonHeight);
+    ctx.fillStyle = '#FFFFFF'; // White text color
+    ctx.font = '20px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('Score: ' + score, buttonX + buttonWidth / 2, buttonY + buttonHeight / 2);
 }
 
 function resetGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawSlingshot();
     drawBall();
-    drawButton();
+    drawUI();
 }
 
 function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawSlingshot();
     drawBall();
-    drawButton();
+    drawUI();
 
     if (!isDragging) {
         if (ballVelocityY !== 0 || ballX !== slingshotBaseX) {
