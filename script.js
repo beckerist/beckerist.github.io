@@ -72,20 +72,19 @@ function drawUI() {
     ctx.fillText('Reset', buttonX + buttonWidth / 2, buttonY + buttonHeight / 2);
 
     // Score Board
-
     const scoreX = 0;
     const scoreY = 50;
     const scoreWidth = 100;
     const scoreHeight = 50;
     ctx.fillStyle = '#4C5FA0'; // Blue
-    ctx.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
+    ctx.fillRect(scoreX, scoreY, scoreWidth, scoreHeight);
     ctx.strokeStyle = '#FFFFFF'; // White border
-    ctx.strokeRect(buttonX, buttonY, buttonWidth, buttonHeight);
+    ctx.strokeRect(scoreX, scoreY, scoreWidth, scoreHeight);
     ctx.fillStyle = '#FFFFFF'; // White text color
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('Score: ' + score, buttonX + buttonWidth / 2, buttonY + buttonHeight / 2);
+    ctx.fillText('Score: ' + score, scoreX + scoreWidth / 2, scoreY + scoreHeight / 2);
 }
 
 function resetGame() {
