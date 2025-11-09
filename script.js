@@ -63,9 +63,9 @@ function drawUI() {
     const buttonHeight = 50;
     ctx.fillStyle = '#4CAF50'; // Green color
     ctx.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
-    ctx.strokeStyle = '#FFFFFF'; // White border
+    ctx.strokeStyle = '#FAFAFF'; // White border
     ctx.strokeRect(buttonX, buttonY, buttonWidth, buttonHeight);
-    ctx.fillStyle = '#FFFFFF'; // White text color
+    ctx.fillStyle = '#FAFAFF'; // White text color
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
@@ -78,9 +78,9 @@ function drawUI() {
     const scoreHeight = 50;
     ctx.fillStyle = '#4C5FA0'; // Blue
     ctx.fillRect(scoreX, scoreY, scoreWidth, scoreHeight);
-    ctx.strokeStyle = '#FFFFFF'; // White border
+    ctx.strokeStyle = '#FAFAFF'; // White border
     ctx.strokeRect(scoreX, scoreY, scoreWidth, scoreHeight);
-    ctx.fillStyle = '#FFFFFF'; // White text color
+    ctx.fillStyle = '#FAFAFF'; // White text color
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
@@ -91,11 +91,11 @@ function drawUI() {
     const debugY = 100;
     const debugWidth = 100;
     const debugHeight = 50;
-    ctx.fillStyle = '#AC5Fr0'; // Red
+    ctx.fillStyle = '#3A35F0'; // Blue
     ctx.fillRect(debugX, debugY, debugWidth, debugHeight);
-    ctx.strokeStyle = '#FFFFFF'; // White border
+    ctx.strokeStyle = '#FAFAFF'; // White border
     ctx.strokeRect(debugX, debugY, debugWidth, debugHeight);
-    ctx.fillStyle = '#FFFFFF'; // White text color
+    ctx.fillStyle = '#FAFAFF'; // White text color
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
