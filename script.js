@@ -152,8 +152,8 @@ function update() {
             }
         }
     } else {
-        ballY = Math.min(mouseY, slingshotBaseY + 50); // Make sure the ball doesn't go off the bottom
-        ballY = Math.max(mouseY, slingshotBaseY - 50); // Make sure the ball doesn't go above the slingshot
+        ballY = Math.min(mouseY, slingshotBaseY + 100); // Make sure the ball doesn't go off the bottom
+        ballY = Math.max(mouseY, slingshotBaseY); // Make sure the ball doesn't go above the slingshot
         ballX = mouseX; // Follow X coordinate 
     }
 
