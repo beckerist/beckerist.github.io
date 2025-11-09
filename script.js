@@ -98,8 +98,11 @@ function update() {
                 ballY = slingshotBaseY - ballRadius; // Prevent going below ground
                 ballVelocityY = -ballVelocityY * 0.6; // Bounce effect
                 if (Math.abs(ballVelocityY) < 1 && ballY === slingshotBaseY - ballRadius) {
-                    resetGame(); // Reset after bounce
-                    alert("Ball is stopped!");
+                    let ballY = slingshotBaseY - 30; // Start directly at the string
+                    let ballX = slingshotBaseX;
+                    let ballVelocityY = 0;
+                    let ballVelocityX = 0;
+                    update(); // Reset after bounce
                 }
             }
 
