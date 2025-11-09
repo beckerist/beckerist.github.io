@@ -55,26 +55,26 @@ function drawBall() {
 }
 
 function drawButton() {
-            const buttonX = 0;
-            const buttonY = 50;
-            const buttonWidth = 100;
-            const buttonHeight = 50;
+    const buttonX = 0;
+    const buttonY = 50;
+    const buttonWidth = 100;
+    const buttonHeight = 50;
 
-            // Button Background
-            ctx.fillStyle = '#4CAF50'; // Green color
-            ctx.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
-            ctx.strokeStyle = '#FFFFFF'; // White border
-            ctx.strokeRect(buttonX, buttonY, buttonWidth, buttonHeight);
-            
-            // Button Text
-            ctx.fillStyle = '#FFFFFF'; // White text color
-            ctx.font = '20px Arial';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('Reset', buttonX + buttonWidth / 2, buttonY + buttonHeight / 2);
-        }
+    // Button Background
+    ctx.fillStyle = '#4CAF50'; // Green color
+    ctx.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
+    ctx.strokeStyle = '#FFFFFF'; // White border
+    ctx.strokeRect(buttonX, buttonY, buttonWidth, buttonHeight);
+    
+    // Button Text
+    ctx.fillStyle = '#FFFFFF'; // White text color
+    ctx.font = '20px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('Reset', buttonX + buttonWidth / 2, buttonY + buttonHeight / 2);
+}
 
-function resetGame() {a
+function resetGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawSlingshot();
     drawBall();
