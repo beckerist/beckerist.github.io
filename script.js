@@ -87,19 +87,19 @@ function drawUI() {
     ctx.fillText('Score: ' + score, scoreX + scoreWidth / 2, scoreY + scoreHeight / 2);
 
     // Debug Board
-    const debugX = 0;
-    const debugY = 100;
-    const debugWidth = 100;
-    const debugHeight = 50;
-    ctx.fillStyle = '#3A35F0'; // Blue
-    ctx.fillRect(debugX, debugY, debugWidth, debugHeight);
+    const debugBoxX = 0;
+    const debugBoxY = 100;
+    const debugBoxWidth = 100;
+    const debugBoxHeight = 50;
+    ctx.fillStyle = '#A05F4C'; // Red
+    ctx.fillRect(debugBoxX, debugBoxY, debugBoxWidth, debugBoxHeight);
     ctx.strokeStyle = '#FAFAFF'; // White border
-    ctx.strokeRect(debugX, debugY, debugWidth, debugHeight);
+    ctx.strokeRect(debugBoxX, debugBoxY, debugBoxWidth, debugBoxHeight);
     ctx.fillStyle = '#FAFAFF'; // White text color
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('Debug: ' + debug, debugX + debugWidth / 2, debugY + debugHeight / 2);
+    ctx.fillText('Debug: ' + debugBox, debugBoxX + debugBoxWidth / 2, debugBoxY + debugBoxHeight / 2);
 }
 
 function resetGame() {
@@ -113,7 +113,7 @@ function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawSlingshot();
     drawBall();
-    debug = ballVelocityY;
+    debugBox = ballVelocityY;
     drawUI();
 
     if (!isDragging) {
