@@ -85,6 +85,21 @@ function drawUI() {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('Score: ' + score, scoreX + scoreWidth / 2, scoreY + scoreHeight / 2);
+
+    // Debug Board
+    const debugX = 0;
+    const debugY = 100;
+    const debugWidth = 100;
+    const debugHeight = 50;
+    ctx.fillStyle = '#AC5Fr0'; // Red
+    ctx.fillRect(debugX, debugY, debugWidth, debugHeight);
+    ctx.strokeStyle = '#FFFFFF'; // White border
+    ctx.strokeRect(debugX, debugY, debugWidth, debugHeight);
+    ctx.fillStyle = '#FFFFFF'; // White text color
+    ctx.font = '20px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('Debug: ' + debug, debugX + debugWidth / 2, debugY + debugHeight / 2);
 }
 
 function resetGame() {
@@ -98,6 +113,7 @@ function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawSlingshot();
     drawBall();
+    debug = ballVelocityY;
     drawUI();
 
     if (!isDragging) {
