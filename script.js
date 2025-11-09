@@ -174,7 +174,7 @@ canvas.addEventListener('touchend', () => {
     if (isDragging) {
         isDragging = false;
         const pullDistance = slingshotBaseY - mouseY;
-        ballVelocityY = pullDistance / 8;
+        ballVelocityY = -pullDistance;
         ballVelocityX = (mouseX + slingshotBaseX) / 20;
     }
 });
