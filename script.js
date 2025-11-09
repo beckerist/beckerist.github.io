@@ -99,6 +99,7 @@ function update() {
                 ballVelocityY = -ballVelocityY * 0.6; // Bounce effect
                 if (Math.abs(ballVelocityY) < 1 && ballY === slingshotBaseY - ballRadius) {
                     resetGame(); // Reset after bounce
+                    alert("Ball is stopped!");
                 }
             }
 
