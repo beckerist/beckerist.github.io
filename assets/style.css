@@ -4,11 +4,20 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #A8A9Ca;
+    background-color: #56708a;
 }
 
 canvas {
     border: 1px solid #343a40;
     background: #ffffff;
     display: block;
+}
+
+.container {
+    width: 400px; /* Set width for everything containered (is that a word?) */
+    position: relative;
+}
+
+#gameCanvas {
+    width: 100%; /* Make canvas responsive(?) */
 }
