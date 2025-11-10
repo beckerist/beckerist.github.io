@@ -79,6 +79,14 @@ function drawHook() {
      };
 }
 
+function drawTarget() {
+    ctx.beginPath();
+    ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+    ctx.fillStyle = '#c9090999';
+    ctx.fill();
+    ctx.closePath();
+}
+
 function drawUI() {
 
     // Score Board
@@ -128,11 +136,9 @@ function resetScore() {
 
 function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawSlingshot();
-    drawHook();
-    drawBall();
-    debugBox = mouseY;
     drawUI();
+    drawSlingshot();
+    drawBall();
 
     if (!isDragging) {
         if (ballVelocityY !== 0 || ballX !== slingshotBaseX) {
@@ -145,7 +151,7 @@ function update() {
                 ballY = slingshotBaseY - ballRadius; // Prevent going below ground
                 ballVelocityY = -ballVelocityY * 0.6; // Bounce effect
                 if (Math.abs(ballVelocityY) < 1 && ballY === slingshotBaseY - ballRadius) {
-                    resetGame();
+                    resetGame(); // Reset if the ball is just rolling on the platform
                 }
             }
 
@@ -165,11 +171,9 @@ function update() {
             }
         }
     } else {
-        ballY = Math.min(mouseY, slingshotBaseY + 100); // Make sure the ball doesn't go off the bottom
-        ballY = Math.max(mouseY, slingshotBaseY - 30); // Make sure the ball doesn't go above the slingshot when pulling
+        ballY = Math.max(mouseY, slingshotBaseY - 35); // Make sure the ball doesn't go above the slingshot when pulling
         ballX = mouseX; // Follow that mouse!
     }
-
     requestAnimationFrame(update);
 }
 
