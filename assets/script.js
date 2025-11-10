@@ -21,8 +21,11 @@ let ballVelocityY = 0;
 let ballVelocityX = 0;
 let gravity = 0.5; // Gravity force
 let maxX = 200;
-let targetX = Math.floor(Math.random() * (max - min + 1)) + min;
-let targetY = Math.floor(Math.random() * (max - min + 1)) + min;
+let minX = -200;
+let maxY = 550;
+let minY = 50;
+let targetX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+let targetY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
 
 function drawSlingshot() {
     // Draw the slingshot's Y shape
