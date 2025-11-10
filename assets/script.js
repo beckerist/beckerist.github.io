@@ -20,6 +20,9 @@ let ballX = slingshotBaseX;
 let ballVelocityY = 0;
 let ballVelocityX = 0;
 let gravity = 0.5; // Gravity force
+let maxX = 200;
+let targetX = Math.floor(Math.random() * (max - min + 1)) + min;
+let targetY = Math.floor(Math.random() * (max - min + 1)) + min;
 
 function drawSlingshot() {
     // Draw the slingshot's Y shape
@@ -117,7 +120,7 @@ function drawUI() {
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('MY: ' + mouseY + ' BY: ' + ballY + ' ' + isDragging, debugBoxX + debugBoxWidth / 2, debugBoxY + debugBoxHeight / 2);
+    ctx.fillText('MY: ' + mouseY + ' MX: ' + mouseX + ' ' + isDragging, debugBoxX + debugBoxWidth / 2, debugBoxY + debugBoxHeight / 2);
 }
 
 function resetGame() {
