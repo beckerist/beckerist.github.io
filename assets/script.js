@@ -192,7 +192,7 @@ canvas.addEventListener('mousedown', (e) => {
 });
 
 canvas.addEventListener('mouseup', () => {
-    if (isDragging) {
+    if (isDragging && mouseY < 60) {
         isDragging = false;
         ballVelocityY = (mouseY - slingshotBaseY) * 2; // Fling back in the opposite speed relative to distance from the start
         ballVelocityX = (mouseX - slingshotBaseX) / 20; // Adjust the value for smoother left to right movement.
