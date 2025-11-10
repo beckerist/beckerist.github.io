@@ -131,7 +131,7 @@ function update() {
     drawSlingshot();
     drawHook();
     drawBall();
-    debugBox = ballVelocityY;
+    debugBox = mouseY;
     drawUI();
 
     if (!isDragging) {
