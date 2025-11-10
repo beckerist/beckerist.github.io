@@ -12,13 +12,13 @@ let score = 0;
 
 // Slingshot dimensions
 const slingshotBaseX = canvas.width / 2;
-const slingshotBaseY = canvas.height - 120; // Slingshot at the bottom
+const slingshotBaseY = canvas.height - 150; // Slingshot at the bottom
 const ballRadius = 30;
-let ballY = slingshotBaseY - 30; // Start directly at the string
+let ballY = slingshotBaseY; // Start directly at the string
 let ballX = slingshotBaseX;
 let ballVelocityY = 0;
 let ballVelocityX = 0;
-let gravity = 0.5; // Gravity force
+let gravity = 0.2; // Gravity force
 
 function drawSlingshot() {
     // Draw the slingshot's Y shape
@@ -38,10 +38,16 @@ function drawSlingshot() {
     ctx.lineWidth = 20;
     ctx.stroke();
 
-    // Draw the horizontal string
+    // Draw the horizontal strings
     ctx.beginPath();
     ctx.moveTo(slingshotBaseX - 50, slingshotBaseY - 30); // Left end of the string
-    ctx.lineTo(slingshotBaseX + 50, slingshotBaseY - 30); // Right end of the string
+    ctx.lineTo(ballX, ballY); // To the center of the ball
+    ctx.strokeStyle = 'brown';
+    ctx.lineWidth = 10;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(slingshotBaseX - 50, slingshotBaseY - 30); // Right end of the string
+    ctx.lineTo(ballX, ballY); // To the center of the ball
     ctx.strokeStyle = 'brown';
     ctx.lineWidth = 10;
     ctx.stroke();
@@ -64,20 +70,20 @@ function drawHook() {
 }
 
 function drawUI() {
-    // Reset Button
+    /* // Reset Button
     const buttonX = 0;
     const buttonY = 0;
     const buttonWidth = 100;
     const buttonHeight = 50;
-    ctx.fillStyle = '#4CAF50'; // Green color
+    ctx.fillStyle = '#4CAF50'; // Green
     ctx.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
     ctx.strokeStyle = '#FAFAFF'; // White border
     ctx.strokeRect(buttonX, buttonY, buttonWidth, buttonHeight);
-    ctx.fillStyle = '#FAFAFF'; // White text color
+    ctx.fillStyle = '#FAFAFF'; // White text
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('Reset', buttonX + buttonWidth / 2, buttonY + buttonHeight / 2);
+    ctx.fillText('Reset', buttonX + buttonWidth / 2, buttonY + buttonHeight / 2); // */
 
     // Score Board
     const scoreX = 0;
@@ -88,7 +94,7 @@ function drawUI() {
     ctx.fillRect(scoreX, scoreY, scoreWidth, scoreHeight);
     ctx.strokeStyle = '#FAFAFF'; // White border
     ctx.strokeRect(scoreX, scoreY, scoreWidth, scoreHeight);
-    ctx.fillStyle = '#FAFAFF'; // White text color
+    ctx.fillStyle = '#FAFAFF'; // White text
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
@@ -183,7 +189,7 @@ canvas.addEventListener('mousedown', (e) => {
 canvas.addEventListener('mouseup', () => {
     if (isDragging) {
         isDragging = false;
-        const pullDistance = slingshotBaseY - mouseY;
+        const pullDistance = slingshotBaseY - 30 - mouseY;
         ballVelocityY = -pullDistance; // Higher fling
         ballVelocityX = (mouseX - slingshotBaseX) / 20; // Adjusted for smoother fling
     }
