@@ -18,7 +18,7 @@ let ballY = slingshotBaseY; // Start directly at the string
 let ballX = slingshotBaseX;
 let ballVelocityY = 0;
 let ballVelocityX = 0;
-let gravity = 0.2; // Gravity force
+let gravity = 0.4; // Gravity force
 
 function drawSlingshot() {
     // Draw the slingshot's Y shape
@@ -49,6 +49,13 @@ function drawSlingshot() {
         ctx.beginPath();
         ctx.moveTo(slingshotBaseX + 50, slingshotBaseY - 30); // Right end of the string
         ctx.lineTo(ballX, ballY); // To the center of the ball
+        ctx.strokeStyle = '563412af';
+        ctx.lineWidth = 10;
+        ctx.stroke();
+    } else {
+        ctx.beginPath();
+        ctx.moveTo(slingshotBaseX - 50, slingshotBaseY - 30); // Left end of the string
+        ctx.lineTo(slingshotBaseX + 50, slingshotBaseY - 30); // Right end of the string
         ctx.strokeStyle = '563412af';
         ctx.lineWidth = 10;
         ctx.stroke();
