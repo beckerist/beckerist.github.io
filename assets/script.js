@@ -146,7 +146,6 @@ function resetGame() {
 
 function resetScore() {
     score = 0;
-
 }
 
 function update() {
@@ -177,6 +176,12 @@ function update() {
                 ballVelocityY = -ballVelocityY * 0.8; // Bounce off the top edge
             }
 
+            // Check for target boundary collision
+            if (ballX - targetX <= ballRadius && ballY - targetY <= ballRadius ) {
+                score++;
+                resetGame();
+            }
+
             // Check for left and right boundary collisions
             if (ballX + ballRadius >= canvas.width) {
                 ballX = canvas.width - ballRadius; // Prevent going out of bounds on the right
@@ -188,7 +193,7 @@ function update() {
         }
     } else {
         //ballY = Math.max(mouseY, slingshotBaseY - 35); // Make sure the ball doesn't go above the slingshot when pulling
-        ballY = mouseY; // Make sure the ball doesn't go above the slingshot when pulling
+        ballY = mouseY;
         ballX = mouseX; // Follow that mouse!
     }
     requestAnimationFrame(update);
@@ -243,10 +248,8 @@ canvas.addEventListener('touchmove', (e) => {
 canvas.addEventListener('touchend', () => {
     if (isDragging) {
         isDragging = false;
-        const pullDistance = slingshotBaseY - mouseY;
-        ballVelocityY = -pullDistance;
-        debugBox = ballVelocityY;
-        ballVelocityX = (mouseX + slingshotBaseX) / 20;
+        ballVelocityY = (mouseY - slingshotBaseY) * 2; // Fling back in the opposite speed relative to distance from the start
+        ballVelocityX = (mouseX - slingshotBaseX) / 20; // Adjust the value for smoother left to right movement.
     }
 });
 
