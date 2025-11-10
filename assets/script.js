@@ -18,7 +18,7 @@ let ballY = slingshotBaseY; // Start directly at the string
 let ballX = slingshotBaseX;
 let ballVelocityY = 0;
 let ballVelocityX = 0;
-let gravity = 0.4; // Gravity force
+let gravity = 0.5; // Gravity force
 
 function drawSlingshot() {
     // Draw the slingshot's Y shape
@@ -64,10 +64,13 @@ function drawSlingshot() {
 
 function drawBall() {
     ctx.beginPath();
+    ctx.setLineDash([4, 2]);
+    ctx.lineDashOffset = -offset;
     ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
     ctx.fillStyle = '#cc8500';
     ctx.fill();
     ctx.closePath();
+    offset++;
 }
 
 function drawHook() {
