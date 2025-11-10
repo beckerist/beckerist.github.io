@@ -23,34 +23,36 @@ let gravity = 0.2; // Gravity force
 function drawSlingshot() {
     // Draw the slingshot's Y shape
     ctx.beginPath();
-    ctx.moveTo(slingshotBaseX - 50, slingshotBaseY - 35); // Base left
-    ctx.lineTo(slingshotBaseX, slingshotBaseY + 40); // Bottom middle
-    ctx.lineTo(slingshotBaseX + 50, slingshotBaseY - 35); // Base right
+    ctx.moveTo(slingshotBaseX - 50, slingshotBaseY - 35); // Top left
+    ctx.lineTo(slingshotBaseX, slingshotBaseY + 40); // Middle
+    ctx.lineTo(slingshotBaseX + 50, slingshotBaseY - 35); // Top right
     ctx.strokeStyle = '#4d647ada';
     ctx.lineWidth = 15;
     ctx.stroke();
 
     // Draw the bottom line of the slingshot
     ctx.beginPath();
-    ctx.moveTo(slingshotBaseX, slingshotBaseY + 40); // Straight down
-    ctx.lineTo(slingshotBaseX, slingshotBaseY + 70); // Bottom middle
-    ctx.strokeStyle = '#12345678';
+    ctx.moveTo(slingshotBaseX, slingshotBaseY + 40); // Back to the middle
+    ctx.lineTo(slingshotBaseX, slingshotBaseY + 70); // To the bottom of the Y
+    ctx.strokeStyle = '#563412af';
     ctx.lineWidth = 20;
     ctx.stroke();
 
     // Draw the horizontal strings
-    ctx.beginPath();
-    ctx.moveTo(slingshotBaseX - 50, slingshotBaseY - 30); // Left end of the string
-    ctx.lineTo(ballX, ballY); // To the center of the ball
-    ctx.strokeStyle = 'brown';
-    ctx.lineWidth = 10;
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(slingshotBaseX - 50, slingshotBaseY - 30); // Right end of the string
-    ctx.lineTo(ballX, ballY); // To the center of the ball
-    ctx.strokeStyle = 'brown';
-    ctx.lineWidth = 10;
-    ctx.stroke();
+    if (isDragging) {
+        ctx.beginPath();
+        ctx.moveTo(slingshotBaseX - 50, slingshotBaseY - 30); // Left end of the string
+        ctx.lineTo(ballX, ballY); // To the center of the ball
+        ctx.strokeStyle = '563412af';
+        ctx.lineWidth = 10;
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(slingshotBaseX + 50, slingshotBaseY - 30); // Right end of the string
+        ctx.lineTo(ballX, ballY); // To the center of the ball
+        ctx.strokeStyle = '563412af';
+        ctx.lineWidth = 10;
+        ctx.stroke();
+    }
 }
 
 function drawBall() {
@@ -87,7 +89,7 @@ function drawUI() {
 
     // Score Board
     const scoreX = 0;
-    const scoreY = 50;
+    const scoreY = 0;
     const scoreWidth = 100;
     const scoreHeight = 50;
     ctx.fillStyle = '#4C5FA0'; // Blue
@@ -101,8 +103,8 @@ function drawUI() {
     ctx.fillText('Score: ' + score, scoreX + scoreWidth / 2, scoreY + scoreHeight / 2);
 
     // Debug Board
-    const debugBoxX = 0;
-    const debugBoxY = 100;
+    const debugBoxX = 100;
+    const debugBoxY = 0;
     const debugBoxWidth = 100;
     const debugBoxHeight = 50;
     ctx.fillStyle = '#A05F4C'; // Red
@@ -180,10 +182,12 @@ function update() {
 
 // Mouse event listeners
 canvas.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    const rect = canvas.getBoundingClientRect();
-    mouseY = e.clientY - rect.top;
-    mouseX = e.clientX - rect.left;
+    if (mouseY < 60) {
+        isDragging = true;
+        const rect = canvas.getBoundingClientRect();
+        mouseY = e.clientY - rect.top;
+        mouseX = e.clientX - rect.left;
+    }
 });
 
 canvas.addEventListener('mouseup', () => {
