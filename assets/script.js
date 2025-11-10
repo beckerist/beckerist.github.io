@@ -15,7 +15,7 @@ const slingshotBaseX = canvas.width / 2;
 const slingshotBaseY = canvas.height - 150; // Slingshot at the bottom
 const ballRadius = 30;
 
-let ballY = slingshotBaseY; // Start directly at the string
+let ballY = slingshotBaseY - 35; // Start directly at the string
 let ballX = slingshotBaseX;
 let ballVelocityY = 0;
 let ballVelocityX = 0;
