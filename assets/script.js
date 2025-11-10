@@ -99,7 +99,7 @@ function drawUI() {
     // Debug Board
     const debugBoxX = 100;
     const debugBoxY = 0;
-    const debugBoxWidth = 100;
+    const debugBoxWidth = 300;
     const debugBoxHeight = 50;
     ctx.fillStyle = '#A05F4C'; // Red
     ctx.fillRect(debugBoxX, debugBoxY, debugBoxWidth, debugBoxHeight);
@@ -182,15 +182,15 @@ canvas.addEventListener('mousedown', (e) => {
         mouseX = e.clientX - rect.left;
     } else {
         isDragging = false;
+        resetGame();
     }
 });
 
 canvas.addEventListener('mouseup', () => {
     if (isDragging) {
         isDragging = false;
-        const pullDistance = mouseY - slingshotBaseY;
-        ballVelocityY = pullDistance; // Fling back in the opposite speed relative to distance from the start
-        ballVelocityX = (mouseX - slingshotBaseX) / 50; // Adjust the value for smoother left to right movement.
+        ballVelocityY = (mouseY - slingshotBaseY) * 2; // Fling back in the opposite speed relative to distance from the start
+        ballVelocityX = (mouseX - slingshotBaseX) / 20; // Adjust the value for smoother left to right movement.
     }
 });
 
