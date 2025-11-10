@@ -80,20 +80,6 @@ function drawHook() {
 }
 
 function drawUI() {
-    /* // Reset Button
-    const buttonX = 0;
-    const buttonY = 0;
-    const buttonWidth = 100;
-    const buttonHeight = 50;
-    ctx.fillStyle = '#4CAF50'; // Green
-    ctx.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
-    ctx.strokeStyle = '#FAFAFF'; // White border
-    ctx.strokeRect(buttonX, buttonY, buttonWidth, buttonHeight);
-    ctx.fillStyle = '#FAFAFF'; // White text
-    ctx.font = '20px Arial';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('Reset', buttonX + buttonWidth / 2, buttonY + buttonHeight / 2); // */
 
     // Score Board
     const scoreX = 0;
@@ -123,7 +109,7 @@ function drawUI() {
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('Debug: ' + debugBox, debugBoxX + debugBoxWidth / 2, debugBoxY + debugBoxHeight / 2);
+    ctx.fillText('Debug: ' + isDragging, debugBoxX + debugBoxWidth / 2, debugBoxY + debugBoxHeight / 2);
 }
 
 function resetGame() {
@@ -202,8 +188,8 @@ canvas.addEventListener('mousedown', (e) => {
 canvas.addEventListener('mouseup', () => {
     if (isDragging) {
         isDragging = false;
-        const pullDistance = slingshotBaseY - mouseY;
-        ballVelocityY = -pullDistance; // Fling back in the opposite speed relative to distance from the start
+        const pullDistance = mouseY - slingshotBaseY;
+        ballVelocityY = pullDistance; // Fling back in the opposite speed relative to distance from the start
         ballVelocityX = (mouseX - slingshotBaseX) / 50; // Adjust the value for smoother left to right movement.
     }
 });
@@ -241,7 +227,7 @@ canvas.addEventListener('touchend', () => {
         isDragging = false;
         const pullDistance = slingshotBaseY - mouseY;
         ballVelocityY = -pullDistance;
-        debugBox = -pullDistance;
+        debugBox = ballVelocityY;
         ballVelocityX = (mouseX + slingshotBaseX) / 20;
     }
 });
