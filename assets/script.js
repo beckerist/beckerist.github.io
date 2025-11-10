@@ -87,7 +87,17 @@ function drawHook() {
 
 function drawTarget() {
     ctx.beginPath();
-    ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+    ctx.arc(targetX, targetY, ballRadius, 0, Math.PI * 2);
+    ctx.fillStyle = '#c9090999';
+    ctx.fill();
+    ctx.closePath();
+    ctx.beginPath();
+    ctx.arc(targetX, targetY, ballRadius - 10, 0, Math.PI * 2);
+    ctx.fillStyle = '#ffffffff';
+    ctx.fill();
+    ctx.closePath();
+    ctx.beginPath();
+    ctx.arc(targetX, targetY, ballRadius - 20, 0, Math.PI * 2);
     ctx.fillStyle = '#c9090999';
     ctx.fill();
     ctx.closePath();
@@ -142,10 +152,11 @@ function resetScore() {
 
 function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawUI();
+    drawTarget();
     drawSlingshot();
     drawBall();
-
+    drawUI();
+    
     if (!isDragging) {
         if (ballVelocityY !== 0 || ballX !== slingshotBaseX) {
             ballVelocityY += gravity; // Gravity effect
