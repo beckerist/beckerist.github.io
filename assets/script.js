@@ -2,7 +2,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 canvas.width = 400;
-canvas.height = window.innerHeight - 150;
+canvas.height = 800;
 const slingshotBaseX = canvas.width / 2;
 const slingshotBaseY = canvas.height - 150; // Slingshot at the bottom
 const ballRadius = 30;
