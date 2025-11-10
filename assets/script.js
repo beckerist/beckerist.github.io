@@ -55,6 +55,14 @@ function drawBall() {
     ctx.closePath();
 }
 
+function drawHook() {
+    const img = new Image();
+    img.src = './assets/images/hook.png';
+    img.onload = function() {
+        ctx.drawImage(img, ballX, ballY, canvas.width, canvas.height);
+     };
+}
+
 function drawUI() {
     // Reset Button
     const buttonX = 0;
@@ -105,14 +113,14 @@ function drawUI() {
 function resetGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawSlingshot();
-    drawBall();
+    drawHook();
     drawUI();
 }
 
 function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawSlingshot();
-    drawBall();
+    drawHook();
     debugBox = ballVelocityY;
     drawUI();
 

@@ -8,16 +8,17 @@ body {
 }
 
 canvas {
-    border: 1px solid #343a40;
-    background: #ffffff;
+    border: 1px solid #2d69a5;
+    background: #ecb1b1;
     display: block;
+    width: 100%; /* Make canvas responsive(?) */
 }
 
 .container {
     width: 400px; /* Set width for everything containered (is that a word?) */
+    height: 100vh; /* Set height to full screen hopefully */
     position: relative;
+    display: flex;
+    flex-direction: column; /* Arrange children vertically */
 }
 
-#gameCanvas {
-    width: 100%; /* Make canvas responsive(?) */
-}
