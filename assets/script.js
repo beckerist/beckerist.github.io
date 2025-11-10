@@ -20,10 +20,10 @@ let ballX = slingshotBaseX;
 let ballVelocityY = 0;
 let ballVelocityX = 0;
 let gravity = 0.5; // Gravity force
-let maxX = 200;
-let minX = -200;
-let maxY = 550;
-let minY = 50;
+let maxX = 350;
+let minX = 25;
+let maxY = 350;
+let minY = 100;
 let targetX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
 let targetY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
 
