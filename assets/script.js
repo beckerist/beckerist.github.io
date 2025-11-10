@@ -170,8 +170,8 @@ function update() {
             }
         }
     } else {
-        ballY = Math.min(mouseY, 624); // Make sure the ball doesn't go off the bottom
-        ballY = Math.max(mouseY, 573); // Make sure the ball doesn't go above the slingshot when pulling
+        ballY = Math.min(mouseY, slingshotBaseY + 100); // Make sure the ball doesn't go off the bottom
+        ballY = Math.max(mouseY, slingshotBaseY - 30); // Make sure the ball doesn't go above the slingshot when pulling
         ballX = mouseX; // Follow that mouse!
     }
 
@@ -185,14 +185,11 @@ canvas.addEventListener('mousedown', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouseY = e.clientY - rect.top;
         mouseX = e.clientX - rect.left;
-    } else {
-        isDragging = false;
-        resetGame();
     }
 });
 
 canvas.addEventListener('mouseup', () => {
-    if (isDragging && mouseY < 60) {
+    if (isDragging) {
         isDragging = false;
         ballVelocityY = (mouseY - slingshotBaseY) * 2; // Fling back in the opposite speed relative to distance from the start
         ballVelocityX = (mouseX - slingshotBaseX) / 20; // Adjust the value for smoother left to right movement.
