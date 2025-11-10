@@ -132,10 +132,10 @@ function resetGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ballVelocityX = 0;
     ballVelocityY = 0;
+    drawUI();
     drawSlingshot();
     drawHook();
     drawBall();
-    drawUI();
 }
 
 function update() {
@@ -197,6 +197,8 @@ canvas.addEventListener('mousedown', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouseY = e.clientY - rect.top;
         mouseX = e.clientX - rect.left;
+    } else {
+        isDragging = false;
     }
 });
 
