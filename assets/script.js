@@ -132,10 +132,7 @@ function resetGame() {
     ballVelocityY = 0;
     score = 0;
     isDragging = false;
-    drawUI();
-    drawSlingshot();
-    drawHook();
-    drawBall();
+    update();
 }
 
 function update() {
