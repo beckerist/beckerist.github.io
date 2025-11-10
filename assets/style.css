@@ -5,6 +5,7 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #56708a;
+    font-family: 'Arial', sans-serif; /* Clean font family */
 }
 
 canvas {
@@ -12,6 +13,12 @@ canvas {
     background: #ecb1b1;
     display: block;
     width: 100%; /* Make canvas responsive(?) */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #ffffff; /* White background */
+    margin-top: 20px; /* Space above */
+    display: block; /* Centering */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .container {
@@ -22,3 +29,27 @@ canvas {
     flex-direction: column; /* Arrange children vertically */
 }
 
+.navbar {
+    background-color: #ffcc00; /* Bright yellow navbar */
+}
+
+.navbar-brand button {
+    background-color: #ff5722; /* Orange button */
+    color: #fff; /* White text */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding around the button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor for button */
+}
+
+.navbar-brand button:hover {
+    background-color: #e64a19; /* Darker orange on hover */
+}
+
+.nav-link {
+    color: #0056b3; /* Bright blue links */
+}
+
+.nav-link:hover {
+    color: #003580; /* Dark blue on hover */
+}
