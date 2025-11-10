@@ -1,32 +1,31 @@
-// Existing Canvas and Context Initialization
+// Settings you can change
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 canvas.width = 400;
 canvas.height = window.innerHeight - 150;
+const slingshotBaseX = canvas.width / 2;
+const slingshotBaseY = canvas.height - 150; // Slingshot at the bottom
+const ballRadius = 30;
+const gravity = 0.5; // Gravity force
+const maxtargetX = 350; // Target area
+const mintargetX = 25;
+const maxtargetY = 350;
+const mintargetY = 100;
 
-// Variables
+// Variables that the program changes
 let isDragging = false;
 let mouseY = 0;
 let mouseX = 0;
 let score = 0;
-
-// Slingshot dimensions
-const slingshotBaseX = canvas.width / 2;
-const slingshotBaseY = canvas.height - 150; // Slingshot at the bottom
-const ballRadius = 30;
-
 let ballY = slingshotBaseY - 35; // Start directly at the string
 let ballX = slingshotBaseX;
 let ballVelocityY = 0;
 let ballVelocityX = 0;
-let gravity = 0.5; // Gravity force
-let maxX = 350;
-let minX = 25;
-let maxY = 350;
-let minY = 100;
-let targetX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
-let targetY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+let targetX = Math.floor(Math.random() * (maxtargetX - mintargetX + 1)) + mintargetX;
+let targetY = Math.floor(Math.random() * (maxtargetY - mintargetY + 1)) + mintargetY;
 
+
+// Functions
 function drawSlingshot() {
     // Draw the slingshot's Y shape
     ctx.beginPath();
