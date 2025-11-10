@@ -112,6 +112,8 @@ function drawUI() {
 
 function resetGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ballVelocityX = 0;
+    ballVelocityY = 0;
     drawSlingshot();
     drawHook();
     drawUI();
@@ -161,7 +163,7 @@ function update() {
         }
     } else {
         ballY = Math.min(mouseY, slingshotBaseY + 100); // Make sure the ball doesn't go off the bottom
-        ballY = Math.max(mouseY, slingshotBaseY); // Make sure the ball doesn't go above the slingshot
+        ballY = Math.max(mouseY, slingshotBaseY - 30); // Make sure the ball doesn't go above the slingshot
         ballX = mouseX; // Follow X coordinate 
     }
 
