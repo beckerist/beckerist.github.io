@@ -109,16 +109,21 @@ function drawUI() {
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('Debug: ' + isDragging, debugBoxX + debugBoxWidth / 2, debugBoxY + debugBoxHeight / 2);
+    ctx.fillText('MY: ' + mouseY + ' BY: ' + ballY, debugBoxX + debugBoxWidth / 2, debugBoxY + debugBoxHeight / 2);
 }
 
 function resetGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ballVelocityX = 0;
     ballVelocityY = 0;
-    score = 0;
-    isDragging = false;
+    ballY = slingshotBaseY - 35; // Start directly at the string
+    ballX = slingshotBaseX;
     update();
+}
+
+function resetScore() {
+    score = 0;
+
 }
 
 function update() {
