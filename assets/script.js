@@ -64,20 +64,17 @@ function drawSlingshot() {
 
 function drawBall() {
     ctx.beginPath();
-    ctx.setLineDash([4, 2]);
-    ctx.lineDashOffset = -offset;
     ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
     ctx.fillStyle = '#cc8500';
     ctx.fill();
     ctx.closePath();
-    offset++;
 }
 
 function drawHook() {
     const img = new Image();
     img.src = './assets/images/hook.png';
     img.onload = function() {
-        ctx.drawImage(img, ballX, ballY, canvas.width, canvas.height);
+        ctx.drawImage(img, ballX, ballY, 14, 22);
      };
 }
 
@@ -132,6 +129,7 @@ function resetGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ballVelocityX = 0;
     ballVelocityY = 0;
+    score = 0;
     drawUI();
     drawSlingshot();
     drawHook();
