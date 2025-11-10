@@ -14,7 +14,7 @@ let score = 0;
 const slingshotBaseX = canvas.width / 2;
 const slingshotBaseY = canvas.height - 150; // Slingshot at the bottom
 const ballRadius = 30;
-const debugBox = -pullDistance;
+
 let ballY = slingshotBaseY; // Start directly at the string
 let ballX = slingshotBaseX;
 let ballVelocityY = 0;
