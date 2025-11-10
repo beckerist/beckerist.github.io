@@ -109,7 +109,7 @@ function drawUI() {
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('MY: ' + mouseY + ' BY: ' + ballY, debugBoxX + debugBoxWidth / 2, debugBoxY + debugBoxHeight / 2);
+    ctx.fillText('MY: ' + mouseY + ' BY: ' + ballY + ' ' + isDragging, debugBoxX + debugBoxWidth / 2, debugBoxY + debugBoxHeight / 2);
 }
 
 function resetGame() {
@@ -145,12 +145,7 @@ function update() {
                 ballY = slingshotBaseY - ballRadius; // Prevent going below ground
                 ballVelocityY = -ballVelocityY * 0.6; // Bounce effect
                 if (Math.abs(ballVelocityY) < 1 && ballY === slingshotBaseY - ballRadius) {
-                    ballY = slingshotBaseY - 30; // Start directly at the string
-                    ballX = slingshotBaseX;
-                    ballVelocityY = 0;
-                    ballVelocityX = 0;
-                    score++;
-                    update(); // Reset after bounce
+                    resetGame();
                 }
             }
 
@@ -191,7 +186,6 @@ canvas.addEventListener('mousedown', (e) => {
 canvas.addEventListener('mouseup', () => {
     if (isDragging) {
         isDragging = false;
-        alert("Ho");
         ballVelocityY = (mouseY - slingshotBaseY) * 2; // Fling back in the opposite speed relative to distance from the start
         ballVelocityX = (mouseX - slingshotBaseX) / 20; // Adjust the value for smoother left to right movement.
     }
