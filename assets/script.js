@@ -116,6 +116,7 @@ function resetGame() {
     ballVelocityY = 0;
     drawSlingshot();
     drawHook();
+    drawBall();
     drawUI();
 }
 
@@ -123,6 +124,7 @@ function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawSlingshot();
     drawHook();
+    drawBall();
     debugBox = ballVelocityY;
     drawUI();
 
