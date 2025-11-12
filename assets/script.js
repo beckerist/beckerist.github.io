@@ -1,13 +1,14 @@
-// Settings you can change
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
+
+// Settings you can change
 canvas.width = 400;
 canvas.height = 800;
 const slingshotBaseX = canvas.width / 2;
 const slingshotBaseY = canvas.height - 150; // Slingshot at the bottom
 const ballRadius = 30;
-const gravity = 0.5; // Gravity force
-const maxtargetX = 350; // Target area
+const gravity = 10; // Gravity force
+const maxtargetX = 350; // Target area boundaries
 const mintargetX = 25;
 const maxtargetY = 350;
 const mintargetY = 100;
@@ -78,7 +79,7 @@ function drawBall() {
 
 function drawHook() {
     const img = new Image();
-    img.src = './assets/images/hook.png';
+    img.src = '/assets/images/hook.png';
     img.onload = function() {
         ctx.drawImage(img, ballX, ballY, 14, 22);
      };
@@ -132,7 +133,7 @@ function drawUI() {
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('MY: ' + mouseY + ' MX: ' + mouseX + ' ' + isDragging, debugBoxX + debugBoxWidth / 2, debugBoxY + debugBoxHeight / 2);
+    ctx.fillText('MY: ' + Math.round(mouseY) + '-- BY: ' + Math.round(ballY), debugBoxX + debugBoxWidth / 2, debugBoxY + debugBoxHeight / 2);
 }
 
 function resetGame() {
@@ -158,13 +159,14 @@ function update() {
     if (!isDragging) {
         if (ballVelocityY !== 0 || ballX !== slingshotBaseX) {
             ballVelocityY += gravity; // Gravity effect
+            ballVelocityX -= 0.5; // Fake friction
             ballY += ballVelocityY; // Update Y position
             ballX -= ballVelocityX; // Update X position
 
-            // Check for bounce on ground
+            // Check for bounce on the ground
             if (ballY + ballRadius >= slingshotBaseY) {
                 ballY = slingshotBaseY - ballRadius; // Prevent going below ground
-                ballVelocityY = -ballVelocityY * 0.6; // Bounce effect
+                ballVelocityY = -ballVelocityY * 0.6; // Bounce effect, reverse and reduce
                 if (Math.abs(ballVelocityY) < 1 && ballY === slingshotBaseY - ballRadius) {
                     resetGame(); // Reset if the ball is just rolling on the platform
                 }
