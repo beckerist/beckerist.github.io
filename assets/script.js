@@ -22,8 +22,8 @@ let ballY = slingshotBaseY - 35; // Start directly at the string
 let ballX = slingshotBaseX;
 let ballVelocityY = 0;
 let ballVelocityX = 0;
-let targetX = Math.floor(Math.random() * (maxtargetX - mintargetX + 1)) + mintargetX;
-let targetY = Math.floor(Math.random() * (maxtargetY - mintargetY + 1)) + mintargetY;
+let targetX = Math.floor(Math.random() * (maxtargetX - mintargetX)) + mintargetX;
+let targetY = Math.floor(Math.random() * (maxtargetY - mintargetY)) + mintargetY;
 
 
 // Functions
@@ -167,7 +167,7 @@ function update() {
             if (ballY + ballRadius >= slingshotBaseY) {
                 ballY = slingshotBaseY - ballRadius; // Prevent going below ground
                 ballVelocityY = -ballVelocityY * 0.6; // Bounce effect, reverse and reduce
-                if (Math.abs(ballVelocityY) < 1 && ballY === slingshotBaseY - ballRadius) {
+                if (Math.abs(ballVelocityY) < 1 && Math.abs(ballVelocitX) < 1) {
                     resetGame(); // Reset if the ball is just rolling on the platform
                 }
             }
