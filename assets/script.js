@@ -7,7 +7,7 @@ canvas.height = 800;
 const slingshotBaseX = canvas.width / 2;
 const slingshotBaseY = canvas.height - 150; // Slingshot at the bottom
 const ballRadius = 30;
-const gravity = 10; // Gravity force
+const gravity = 1; // Gravity force
 const maxtargetX = 350; // Target area boundaries
 const mintargetX = 25;
 const maxtargetY = 350;
@@ -159,7 +159,7 @@ function update() {
     if (!isDragging) {
         if (ballVelocityY !== 0 || ballX !== slingshotBaseX) {
             ballVelocityY += gravity; // Gravity effect
-            ballVelocityX -= 0.5; // Fake friction
+            ballVelocityX -= 0.5; // Fake friction gound (fix)
             ballY += ballVelocityY; // Update Y position
             ballX -= ballVelocityX; // Update X position
 
