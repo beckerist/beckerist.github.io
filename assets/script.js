@@ -234,7 +234,7 @@ canvas.addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouseY = e.clientY - rect.top;
         mouseX = e.clientX - rect.left;
-        console.log(mouseY + " | " + ballY + " | " + mouseX + " | " + ballX);
+        console.log(mouseY + "my | " + ballY + " by| " + mouseX + " mx| " + ballX + ' bx');
     }
 });
 
