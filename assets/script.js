@@ -257,3 +257,9 @@ canvas.addEventListener('touchend', () => {
 
 // Start the animation loop
 update();
+
+$(document).ready(function () {
+    $('#toggleDebug').click(function () {
+        $('#debugDiv').toggle();
+    });
+});
