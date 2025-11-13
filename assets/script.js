@@ -142,7 +142,6 @@ function resetGame() {
     ballVelocityY = 0;
     ballY = slingshotBaseY - 35; // Start directly at the string
     ballX = slingshotBaseX;
-    update();
 }
 
 function resetScore() {
