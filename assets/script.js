@@ -185,9 +185,9 @@ function update() {
             }
 
             // Check for target boundary collision
-            if (Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)) <= (ballRadius * 2)) {
+            if (Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)) <= (ballRadius)) {
                 score++;
-                alert("target distance: " + Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)));
+                console.log("target distance: " + Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)));
                 resetGame();
             }
 
