@@ -167,7 +167,7 @@ function update() {
             if (ballY + ballRadius >= slingshotBaseY) {
                 ballY = slingshotBaseY - ballRadius; // Prevent going below ground
                 ballVelocityY = -ballVelocityY * 0.6; // Bounce effect, reverse and reduce
-                if (Math.abs(ballVelocityY) < 1 && Math.abs(ballVelocitX) < 1) {
+                if (Math.abs(ballVelocityY) < 1 && Math.abs(ballVelocityX) < 1) {
                     resetGame(); // Reset if the ball is just rolling on the platform
                 }
             }
