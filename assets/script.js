@@ -113,7 +113,7 @@ function drawUI() {
     ctx.fillStyle = '#4C5FA0'; // Blue
     ctx.fillRect(scoreX, scoreY, scoreWidth, scoreHeight);
     ctx.strokeStyle = '#FAFAFF'; // White border
-    ctx.strokeRect(scoreX, scoreY, scoreWidth, scoreHeight);
+    ctx.roundRect(scoreX, scoreY, scoreWidth, scoreHeight, 2);
     ctx.fillStyle = '#FAFAFF'; // White text
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
@@ -128,7 +128,7 @@ function drawUI() {
     ctx.fillStyle = '#A05F4C'; // Red
     ctx.fillRect(debugBoxX, debugBoxY, debugBoxWidth, debugBoxHeight);
     ctx.strokeStyle = '#FAFAFF'; // White border
-    ctx.strokeRect(debugBoxX, debugBoxY, debugBoxWidth, debugBoxHeight);
+    ctx.roundRect(debugBoxX, debugBoxY, debugBoxWidth, debugBoxHeight, 2);
     ctx.fillStyle = '#FAFAFF'; // White text color
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
@@ -207,7 +207,7 @@ function update() {
         ballX = mouseX; // Follow that mouse!
     }
     
-    console.log('Velocity X: ' + roundToTwo(ballVelocityX) + ' | Velocity Y: ' + roundToTwo(ballVelocityY) + ' | Ball X: ' + roundToTwo(ballX) + ' | Ball Y: ' + roundToTwo(ballY));
+    //console.log('Velocity X: ' + roundToTwo(ballVelocityX) + ' | Velocity Y: ' + roundToTwo(ballVelocityY) + ' | Ball X: ' + roundToTwo(ballX) + ' | Ball Y: ' + roundToTwo(ballY));
     requestAnimationFrame(update);
 }
 
@@ -218,6 +218,8 @@ canvas.addEventListener('mousedown', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouseY = e.clientY - rect.top;
         mouseX = e.clientX - rect.left;
+        console.log(e.clientY + " | " + rect.top);
+      
     }
 });
 
