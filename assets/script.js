@@ -258,6 +258,8 @@ canvas.addEventListener('touchend', () => {
 // Start the animation loop
 update();
 
+console.log('Velocity X: ' + ballVelocityX + ' | Velocity Y: ' + ballVelocityY);
+
 $(document).ready(function () {
     $('#toggleDebug').click(function () {
         $('#debugDiv').toggle();
