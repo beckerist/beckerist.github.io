@@ -199,7 +199,7 @@ function update() {
         ballX = mouseX; // Follow that mouse!
     }
     
-    console.log('Velocity X: ' + ballVelocityX + ' | Velocity Y: ' + ballVelocityY);
+    console.log('Velocity X: ' + ballVelocityX + ' | Velocity Y: ' + ballVelocityY + ' | Ball X: ' + ballX + ' | Ball Y: ' + ballY);
     requestAnimationFrame(update);
 }
 
