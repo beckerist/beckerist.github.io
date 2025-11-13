@@ -179,7 +179,7 @@ function update() {
             }
 
             // Check for target boundary collision
-            if (abs(abs(ballX - targetX) - abs(ballY - targetY)) <= ballRadius ) {
+            if (Math.abs(Math.abs(ballX - targetX) - Math.abs(ballY - targetY)) <= ballRadius ) {
                 score++;
                 resetGame();
             }
