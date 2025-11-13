@@ -198,6 +198,8 @@ function update() {
         ballY = mouseY;
         ballX = mouseX; // Follow that mouse!
     }
+    
+    console.log('Velocity X: ' + ballVelocityX + ' | Velocity Y: ' + ballVelocityY);
     requestAnimationFrame(update);
 }
 
@@ -258,7 +260,6 @@ canvas.addEventListener('touchend', () => {
 // Start the animation loop
 update();
 
-console.log('Velocity X: ' + ballVelocityX + ' | Velocity Y: ' + ballVelocityY);
 
 $(document).ready(function () {
     $('#toggleDebug').click(function () {
