@@ -149,6 +149,14 @@ function resetScore() {
     score = 0;
 }
 
+function roundToTwo(value) {
+    if (typeof value !== 'number' || isNaN(value)) {
+        throw new Error('Input must be a valid number');
+    }
+    return Math.round((value + Number.EPSILON) * 100) / 100;
+}
+
+
 function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawTarget();
@@ -199,7 +207,7 @@ function update() {
         ballX = mouseX; // Follow that mouse!
     }
     
-    console.log('Velocity X: ' + ballVelocityX + ' | Velocity Y: ' + ballVelocityY + ' | Ball X: ' + ballX + ' | Ball Y: ' + ballY);
+    console.log('Velocity X: ' + roundToTwo(ballVelocityX) + ' | Velocity Y: ' + roundToTwo(ballVelocityY) + ' | Ball X: ' + roundToTwo(ballX) + ' | Ball Y: ' + roundToTwo(ballY));
     requestAnimationFrame(update);
 }
 
