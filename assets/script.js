@@ -149,9 +149,6 @@ function resetScore() {
 }
 
 function roundToTwo(value) {
-    if (typeof value !== 'number' || isNaN(value)) {
-        throw new Error('Input must be a valid number');
-    }
     return Math.round((value + Number.EPSILON) * 100) / 100;
 }
 
@@ -183,11 +180,11 @@ function update() {
             // Check for top boundary collision
             if (ballY - ballRadius <= 0) {
                 ballY = ballRadius; // Prevent going out of bounds at the top
-                ballVelocityY = -ballVelocityY * 0.8; // Bounce off the top edge
+                ballVelocityY = -ballVelocityY * 0.4; // Bounce off the top edge
             }
 
             // Check for target boundary collision
-            if (Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)) <= ballRadius ) {
+            if (Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)) <= (ballRadius + 20)) {
                 score++;
                 alert("target");
                 resetGame();
@@ -196,10 +193,10 @@ function update() {
             // Check for left and right boundary collisions
             if (ballX + ballRadius >= canvas.width) {
                 ballX = canvas.width - ballRadius; // Prevent going out of bounds on the right
-                ballVelocityX = -ballVelocityX * 0.8; // Bounce off the right edge
+                ballVelocityX = -ballVelocityX * 0.8; // Bounce off the right edge and slow
             } else if (ballX - ballRadius <= 0) {
                 ballX = ballRadius; // Prevent going out of bounds on the left
-                ballVelocityX = -ballVelocityX * 0.8; // Bounce off the left edge
+                ballVelocityX = -ballVelocityX * 0.8; // Bounce off the left edge and slow
             }
         }
     } else {
