@@ -8,6 +8,7 @@ const slingshotBaseX = canvas.width / 2;
 const slingshotBaseY = canvas.height - 150; // Slingshot at the bottom
 const ballRadius = 30;
 const gravity = 1; // Gravity force
+const targetRadius = 30;
 const maxtargetX = 350; // Target area boundaries
 const mintargetX = 25;
 const maxtargetY = 350;
@@ -87,17 +88,17 @@ function drawHook() {
 
 function drawTarget() {
     ctx.beginPath();
-    ctx.arc(targetX, targetY, ballRadius, 0, Math.PI * 2);
+    ctx.arc(targetX, targetY, targetRadius, 0, Math.PI * 2);
     ctx.fillStyle = '#c9090999';
     ctx.fill();
     ctx.closePath();
     ctx.beginPath();
-    ctx.arc(targetX, targetY, ballRadius - 10, 0, Math.PI * 2);
+    ctx.arc(targetX, targetY, targetRadius - 10, 0, Math.PI * 2);
     ctx.fillStyle = '#ffffffff';
     ctx.fill();
     ctx.closePath();
     ctx.beginPath();
-    ctx.arc(targetX, targetY, ballRadius - 20, 0, Math.PI * 2);
+    ctx.arc(targetX, targetY, targetRadius - 20, 0, Math.PI * 2);
     ctx.fillStyle = '#c9090999';
     ctx.fill();
     ctx.closePath();
@@ -184,7 +185,7 @@ function update() {
             }
 
             // Check for target boundary collision
-            if (Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)) <= (ballRadius + 20)) {
+            if (Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)) <= (ballRadius * 2)) {
                 score++;
                 alert("target");
                 resetGame();
