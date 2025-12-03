@@ -105,7 +105,6 @@ function drawTarget() {
 }
 
 function drawUI() {
-
     // Score Board
     const scoreX = 0;
     const scoreY = 0;
@@ -148,11 +147,38 @@ function resetGame() {
 function resetScore() {
     score = 0;
 }
-
 function roundToTwo(value) {
     return Math.round((value + Number.EPSILON) * 100) / 100;
 }
 
+function moveTarget() {
+    // Move the target along a predefined path
+    if (targetDirection === 'left') {
+        targetX -= targetStep;
+        if (targetX <= 20) {
+            targetX = 20; // Stop at left edge and move down
+            targetDirection = 'down';
+        }
+    } else if (targetDirection === 'down') {
+        targetY += targetStep;
+        if (targetY >= canvas.height - 20) {
+            targetY = canvas.height - 20; // Stop at the bottom edge and move right
+            targetDirection = 'right';
+        }
+    } else if (targetDirection === 'right') {
+        targetX += targetStep;
+        if (targetX >= canvas.width - 20) {
+            targetX = canvas.width - 20; // Stop at right edge and move down
+            targetDirection = 'down-right';
+        }
+    } else if (targetDirection === 'down-right') {
+        targetY += targetStep;
+        if (targetY >= canvas.height - 20) {
+            targetY = canvas.height - 20; // Stop at bottom edge and move left
+            targetDirection = 'left';
+        }
+    }
+}
 
 function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -160,6 +186,7 @@ function update() {
     drawSlingshot();
     drawBall();
     drawUI();
+    moveTarget();
     
     if (!isDragging) {
         if (ballVelocityY !== 0 || ballX !== slingshotBaseX) {
