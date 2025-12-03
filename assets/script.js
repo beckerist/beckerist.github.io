@@ -172,7 +172,7 @@ function moveTarget() {
             targetX = canvas.width - 20; // Stop at right edge and move down
             targetDirection = 'down-right';
         }
-    } else if (targetDirection === 'down-right') {
+    } else {
         targetY += targetStep;
         if (targetY >= canvas.height - 20) {
             targetY = canvas.height - 20; // Stop at bottom edge and move left
@@ -240,13 +240,10 @@ function update() {
 
 // Mouse event listeners
 canvas.addEventListener('mousedown', (e) => {
-    if (mouseY < 60) {
         isDragging = true;
         const rect = canvas.getBoundingClientRect();
         mouseY = e.clientY - rect.top;
         mouseX = e.clientX - rect.left;
-      
-    }
 });
 
 canvas.addEventListener('mouseup', () => {
