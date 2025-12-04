@@ -240,10 +240,13 @@ function update() {
 
 // Mouse event listeners
 canvas.addEventListener('mousedown', (e) => {
+    if (mouseY < 60) {
         isDragging = true;
         const rect = canvas.getBoundingClientRect();
         mouseY = e.clientY - rect.top;
         mouseX = e.clientX - rect.left;
+      
+    }
 });
 
 canvas.addEventListener('mouseup', () => {
