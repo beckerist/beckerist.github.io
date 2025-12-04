@@ -299,4 +299,5 @@ $(document).ready(function () {
     $('#toggleDebug').click(function () {
         $('#debugDiv').toggle();
     });
+    document.getElementById("version").innerHTML = version;
 });
