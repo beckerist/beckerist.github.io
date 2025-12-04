@@ -15,7 +15,7 @@ const maxtargetY = 350;
 const mintargetY = 100;
 
 // Variables that the program changes
-let version = 25312.1;
+let version = 25312.2;
 let isDragging = false;
 let mouseY = 0;
 let mouseX = 0;
