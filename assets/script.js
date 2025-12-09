@@ -13,7 +13,7 @@ const maxtargetX = 350; // Target area boundaries
 const mintargetX = 25;
 const maxtargetY = 350;
 const mintargetY = 100;
-const targetStep = 10;
+const targetSteps = 0;
 const targetDirection = ['up', 'left', 'down', 'right'];
 const randomDirection = targetDirection => targetDirection.length ? targetDirection[Math.floor(Math.random() * targetDirection.length)] : null;
 
