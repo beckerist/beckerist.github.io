@@ -160,22 +160,34 @@ function moveTarget() {
         switch (targetDirection) {
             case 'up':
                 targetDirection = 'right';
-                targetY--;
                 break;
             case 'down':
                 targetDirection = 'left';
-                targetY++;
                 break;
             case 'left':
                 targetDirection = 'up';
-                targetX--;
                 break;
             case 'right':
                 targetDirection = 'down';
-                targetX++;
                 break;
             }
          targetSteps = 0;
+        }
+    else {
+        switch (targetDirection) {
+            case 'up':
+                targetY--;
+                break;
+            case 'down':
+                targetY++;
+                break;
+            case 'left':
+                targetX--;
+                break;
+            case 'right':
+                targetX++;
+                break;
+            }
         }
 }
 
