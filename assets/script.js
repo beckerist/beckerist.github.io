@@ -14,7 +14,8 @@ const mintargetX = 25;
 const maxtargetY = 350;
 const mintargetY = 100;
 const targetStep = 10;
-const targetDirection = "down";
+const targetDirection = ['up', 'left', 'down', 'right'];
+const randomDirection = targetDirection => targetDirection.length ? targetDirection[Math.floor(Math.random() * targetDirection.length)] : null;
 
 // Variables that the program changes
 let version = 25312.2;
@@ -154,32 +155,33 @@ function roundToTwo(value) {
     return Math.round((value + Number.EPSILON) * 100) / 100;
 }
 
-function moveTarget(targetDirection) {
+function moveTarget() {
+    targetSteps++;
     // Move the target along a predefined path
     if (targetDirection === 'left') {
         targetX -= targetStep;
-        if (targetX <= 20) {
-            targetX = 20; // Stop at left edge and move down
+        if (targetSteps > 20) {
+            targetSteps = 0;
             targetDirection = 'down';
         }
     } else if (targetDirection === 'down') {
         targetY += targetStep;
-        if (targetY >= canvas.height - 20) {
-            targetY = canvas.height - 20; // Stop at the bottom edge and move right
+        if (targetSteps > 20) {
+            targetSteps = 0;
             targetDirection = 'right';
         }
     } else if (targetDirection === 'right') {
         targetX += targetStep;
-        if (targetX >= canvas.width - 20) {
-            targetX = canvas.width - 20; // Stop at right edge and move down
-            targetDirection = 'down-right';
+        if (targetSteps > 20) {
+            targetSteps = 0;
+            targetDirection = 'left';
         }
     } else {
         targetY += targetStep;
-        if (targetY >= canvas.height - 20) {
-            targetY = canvas.height - 20; // Stop at bottom edge and move left
+        if (targetSteps > 20) {
+            targetSteps = 0;
             targetDirection = 'left';
-        }
+        }   
     }
 }
 
@@ -189,7 +191,7 @@ function update() {
     drawSlingshot();
     drawBall();
     drawUI();
-    moveTarget(targetDirection);
+    moveTarget();
     
     if (!isDragging) {
         if (ballVelocityY !== 0 || ballX !== slingshotBaseX) {
