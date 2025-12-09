@@ -13,7 +13,6 @@ const maxtargetX = 350; // Target area boundaries
 const mintargetX = 25;
 const maxtargetY = 350;
 const mintargetY = 100;
-const targetSteps = 0;
 const targetDirection = ['up', 'left', 'down', 'right'];
 const randomDirection = targetDirection => targetDirection.length ? targetDirection[Math.floor(Math.random() * targetDirection.length)] : null;
 
@@ -27,6 +26,7 @@ let ballY = slingshotBaseY - 35; // Start directly at the string
 let ballX = slingshotBaseX;
 let ballVelocityY = 0;
 let ballVelocityX = 0;
+let targetSteps = 0;
 let targetX = Math.floor(Math.random() * (maxtargetX - mintargetX)) + mintargetX;
 let targetY = Math.floor(Math.random() * (maxtargetY - mintargetY)) + mintargetY;
 
