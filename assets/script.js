@@ -27,6 +27,7 @@ let ballVelocityX = 0;
 let targetSteps = 0;
 let targetX = Math.floor(Math.random() * (maxtargetX - mintargetX)) + mintargetX;
 let targetY = Math.floor(Math.random() * (maxtargetY - mintargetY)) + mintargetY;
+let targetDirection = "down";
 
 
 // Functions
