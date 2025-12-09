@@ -204,8 +204,7 @@ function update() {
             if (ballY + ballRadius >= slingshotBaseY) {
                 ballY = slingshotBaseY - ballRadius; // Prevent going below ground
                 ballVelocityY = -ballVelocityY * 0.6; // Bounce effect, reverse and reduce
-                if (Math.abs(ballVelocityY) < 1 && Math.abs(ballVelocityX) < 1) {
-                    alert("slow"); 
+                if (Math.abs(ballVelocityY) < 5 && Math.abs(ballVelocityX) < 5) {
                     resetGame(); // Reset if the ball is just rolling on the platform
                 }
             }
@@ -244,13 +243,10 @@ function update() {
 
 // Mouse event listeners
 canvas.addEventListener('mousedown', (e) => {
-    if (mouseY < 60) {
         isDragging = true;
         const rect = canvas.getBoundingClientRect();
         mouseY = e.clientY - rect.top;
         mouseX = e.clientX - rect.left;
-      
-    }
 });
 
 canvas.addEventListener('mouseup', () => {
@@ -266,7 +262,6 @@ canvas.addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouseY = e.clientY - rect.top;
         mouseX = e.clientX - rect.left;
-        console.log(mouseY + "my | " + ballY + " by| " + mouseX + " mx| " + ballX + ' bx');
     }
 });
 
