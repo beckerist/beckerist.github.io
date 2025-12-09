@@ -157,32 +157,27 @@ function roundToTwo(value) {
 
 function moveTarget() {
     targetSteps++;
-    // Move the target along a predefined path
-    if (targetDirection === 'left') {
-        targetX -= targetStep;
-        if (targetSteps > 20) {
-            targetSteps = 0;
-            targetDirection = 'down';
+    if (targetSteps > 20) {
+        switch (targetDirection) {
+            case 'up':
+                targetDirection = 'right';
+                targetY--;
+                break;
+            case 'down':
+                targetDirection = 'left';
+                targetY++;
+                break;
+            case 'left':
+                targetDirection = 'up';
+                targetX--;
+                break;
+            case 'right':
+                targetDirection = 'down';
+                targetX++;
+                break;
+            }
+         targetSteps = 0;
         }
-    } else if (targetDirection === 'down') {
-        targetY += targetStep;
-        if (targetSteps > 20) {
-            targetSteps = 0;
-            targetDirection = 'right';
-        }
-    } else if (targetDirection === 'right') {
-        targetX += targetStep;
-        if (targetSteps > 20) {
-            targetSteps = 0;
-            targetDirection = 'left';
-        }
-    } else {
-        targetY += targetStep;
-        if (targetSteps > 20) {
-            targetSteps = 0;
-            targetDirection = 'left';
-        }   
-    }
 }
 
 function update() {
