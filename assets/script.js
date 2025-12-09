@@ -13,11 +13,9 @@ const maxtargetX = 350; // Target area boundaries
 const mintargetX = 25;
 const maxtargetY = 350;
 const mintargetY = 100;
-const targetDirection = ['up', 'left', 'down', 'right'];
-const randomDirection = targetDirection => targetDirection.length ? targetDirection[Math.floor(Math.random() * targetDirection.length)] : null;
 
 // Variables that the program changes
-let version = 25312.2;
+let version = 250912;
 let isDragging = false;
 let mouseY = 0;
 let mouseX = 0;
@@ -146,6 +144,7 @@ function resetGame() {
     ballVelocityY = 0;
     ballY = slingshotBaseY - 35; // Start directly at the string
     ballX = slingshotBaseX;
+    update();
 }
 
 function resetScore() {
