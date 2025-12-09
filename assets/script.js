@@ -13,6 +13,8 @@ const maxtargetX = 350; // Target area boundaries
 const mintargetX = 25;
 const maxtargetY = 350;
 const mintargetY = 100;
+const targetStep = 10;
+const targetDirection = "down";
 
 // Variables that the program changes
 let version = 25312.2;
@@ -152,7 +154,7 @@ function roundToTwo(value) {
     return Math.round((value + Number.EPSILON) * 100) / 100;
 }
 
-function moveTarget() {
+function moveTarget(targetDirection) {
     // Move the target along a predefined path
     if (targetDirection === 'left') {
         targetX -= targetStep;
@@ -187,7 +189,7 @@ function update() {
     drawSlingshot();
     drawBall();
     drawUI();
-    moveTarget();
+    moveTarget(targetDirection);
     
     if (!isDragging) {
         if (ballVelocityY !== 0 || ballX !== slingshotBaseX) {
