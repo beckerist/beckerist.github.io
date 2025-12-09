@@ -177,16 +177,16 @@ function moveTarget() {
     else {
         switch (targetDirection) {
             case 'up':
-                targetY--;
+                targetY = targetY - 5;
                 break;
             case 'down':
-                targetY++;
+                targetY = targetY + 5;
                 break;
             case 'left':
-                targetX--;
+                targetX = targetX - 5;
                 break;
             case 'right':
-                targetX++;
+                targetX = targetX + 5;
                 break;
             }
         }
