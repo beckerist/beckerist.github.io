@@ -158,7 +158,7 @@ function roundToTwo(value) {
 function moveTarget() {
     targetSteps++;
     if (targetSteps > 20) {
-        switch (targetDirection) {
+        /*switch (targetDirection) {
             case 'up':
                 targetDirection = 'right';
                 break;
@@ -171,8 +171,9 @@ function moveTarget() {
             case 'right':
                 targetDirection = 'down';
                 break;
-            }
-         targetSteps = 0;
+            }*/
+            targetDirection = ['up', 'down', 'left', 'right'][Math.floor(Math.random() * 4)];
+            targetSteps = 0;
         }
     else {
         switch (targetDirection) {
