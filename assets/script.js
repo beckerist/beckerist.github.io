@@ -156,7 +156,7 @@ function drawUI() {
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('MY: ' + Math.round(mouseY) + '-- BY: ' + Math.round(ballY), debugBoxX + debugBoxWidth / 2, debugBoxY + debugBoxHeight / 2);
+    ctx.fillText('TY: ' + Math.round(targetY) + '-- TX: ' + Math.round(targetX), debugBoxX + debugBoxWidth / 2, debugBoxY + debugBoxHeight / 2);
 }
 
 function resetGame() {
