@@ -15,7 +15,7 @@ const maxtargetY = 350;
 const mintargetY = 100;
 
 // Variables that the program changes
-let version = "0.01n01";
+let version = "0.01n02";
 let isDragging = false;
 let mouseY = 0;
 let mouseX = 0;
@@ -107,6 +107,26 @@ function drawTarget() {
     ctx.closePath();
 }
 
+function explodeTarget() {
+
+    ctx.beginPath();
+    ctx.arc(targetX, targetY, targetRadius, 0, Math.PI * 2);
+    ctx.fillStyle = '#29099999';
+    ctx.fill();
+    ctx.closePath();
+    ctx.beginPath();
+    ctx.arc(targetX, targetY, targetRadius - 10, 0, Math.PI * 2);
+    ctx.fillStyle = '#ffffffff';
+    ctx.fill();
+    ctx.closePath();
+    ctx.beginPath();
+    ctx.arc(targetX, targetY, targetRadius - 20, 0, Math.PI * 2);
+    ctx.fillStyle = '#c9090999';
+    ctx.fill();
+    ctx.closePath();
+
+}
+
 function drawUI() {
     // Score Board
     const scoreX = 0;
@@ -178,20 +198,36 @@ function moveTarget() {
     else {
         switch (targetDirection) {
             case 'up':
-                targetY = targetY - 5;
+                if (targetY < canvas.height)
+                {
+                    targetY = targetY - 5;
+                }   
                 break;
             case 'down':
-                targetY = targetY + 5;
+                if (targetY > 60)
+                {
+                    targetY = targetY + 5;
+                }   
                 break;
             case 'left':
-                targetX = targetX - 5;
+                if (targetX > 0)
+                {
+                    targetX = targetX - 5;
+                }   
                 break;
             case 'right':
-                targetX = targetX + 5;
+                if (targetX < canvas.width)
+                {
+                    targetX = targetX + 5;
+                }   
                 break;
+            default:
+                explodeTarget();
             }
         }
 }
+
+
 
 function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
