@@ -198,13 +198,13 @@ function moveTarget() {
     else {
         switch (targetDirection) {
             case 'up':
-                if (targetY < canvas.height)
+                if (targetY > 0)
                 {
                     targetY = targetY - 5;
                 }   
                 break;
             case 'down':
-                if (targetY > 60)
+                if (targetY < canvas.height)
                 {
                     targetY = targetY + 5;
                 }   
