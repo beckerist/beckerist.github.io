@@ -266,9 +266,7 @@ function update(currentTime) {
                     ballX = ballRadius; // Prevent going out of bounds on the left
                     ballVelocityX = -ballVelocityX * 0.8; // Bounce off the left edge and slow
                 }
-                requestAnimationFrame(update);
-            }
-        
+            }    
         } else {
             ballY = Math.max(mouseY, slingshotBaseY - 35); // Make sure the ball doesn't go above the slingshot when pulling
             //ballY = mouseY;
