@@ -178,45 +178,31 @@ function roundToTwo(value) {
 function moveTarget() {
     targetSteps++;
     if (targetSteps > 20) {
-        /*switch (targetDirection) {
-            case 'up':
-                targetDirection = 'right';
-                break;
-            case 'down':
-                targetDirection = 'left';
-                break;
-            case 'left':
-                targetDirection = 'up';
-                break;
-            case 'right':
-                targetDirection = 'down';
-                break;
-            }*/
             targetDirection = ['up', 'down', 'left', 'right'][Math.floor(Math.random() * 4)];
             targetSteps = 0;
         }
     else {
         switch (targetDirection) {
             case 'up':
-                if (targetY > 0)
+                if (targetY > mintargetY)
                 {
                     targetY = targetY - 5;
                 }   
                 break;
             case 'down':
-                if (targetY < canvas.height)
+                if (targetY < maxtargetY)
                 {
                     targetY = targetY + 5;
                 }   
                 break;
             case 'left':
-                if (targetX > 0)
+                if (targetX > mintargetX)
                 {
                     targetX = targetX - 5;
                 }   
                 break;
             case 'right':
-                if (targetX < canvas.width)
+                if (targetX < maxtargetX)
                 {
                     targetX = targetX + 5;
                 }   
