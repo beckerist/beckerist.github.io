@@ -219,14 +219,14 @@ function moveTarget() {
 }
 
 function update(currentTime) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawTarget();
-    drawSlingshot();
-    drawBall();
-    drawUI();
-    moveTarget();
     const deltaTime = currentTime - lastTime;
     if (deltaTime >= interval) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawTarget();
+        drawSlingshot();
+        drawBall();
+        drawUI();
+        moveTarget();
         lastTime = currentTime;
 
         if (!isDragging) {
