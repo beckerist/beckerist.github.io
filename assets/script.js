@@ -163,6 +163,8 @@ function resetGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ballVelocityX = 0;
     ballVelocityY = 0;
+    targetX = Math.floor(Math.random() * (maxtargetX - mintargetX)) + mintargetX;
+    targetY = Math.floor(Math.random() * (maxtargetY - mintargetY)) + mintargetY;
     ballY = slingshotBaseY - 35; // Start directly at the string
     ballX = slingshotBaseX;
     update();
