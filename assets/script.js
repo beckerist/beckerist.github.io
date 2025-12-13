@@ -13,9 +13,11 @@ const maxtargetX = 350; // Target area boundaries
 const mintargetX = 25;
 const maxtargetY = 350;
 const mintargetY = 100;
+const targetFPS = 60;
+const interval = 1000 / targetFPS; 
 
 // Variables that the program changes
-let version = "0.01n02";
+let version = "0.12n13";
 let isDragging = false;
 let mouseY = 0;
 let mouseX = 0;
@@ -28,6 +30,7 @@ let targetSteps = 0;
 let targetX = Math.floor(Math.random() * (maxtargetX - mintargetX)) + mintargetX;
 let targetY = Math.floor(Math.random() * (maxtargetY - mintargetY)) + mintargetY;
 let targetDirection = "down";
+let lastTime = 0; 
 
 
 // Functions
@@ -215,60 +218,63 @@ function moveTarget() {
         }
 }
 
-
-
-function update() {
+function update(currentTime) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawTarget();
     drawSlingshot();
     drawBall();
     drawUI();
     moveTarget();
-    
-    if (!isDragging) {
-        if (ballVelocityY !== 0 || ballX !== slingshotBaseX) {
-            ballVelocityY += gravity; // Gravity effect
-            //ballVelocityX -= 0.5; // Fake friction gound (fix)
-            ballY += ballVelocityY; // Update Y position
-            ballX -= ballVelocityX; // Update X position
+    const deltaTime = currentTime - lastTime;
+    if (deltaTime >= interval) {
+        lastTime = currentTime;
 
-            // Check for bounce on the ground
-            if (ballY + ballRadius >= slingshotBaseY) {
-                ballY = slingshotBaseY - ballRadius; // Prevent going below ground
-                ballVelocityY = -ballVelocityY * 0.6; // Bounce effect, reverse and reduce
-                if (Math.abs(ballVelocityY) < 5 && Math.abs(ballVelocityX) < 5) {
-                    resetGame(); // Reset if the ball is just rolling on the platform
+        if (!isDragging) {
+            if (ballVelocityY !== 0 || ballX !== slingshotBaseX) {
+                ballVelocityY += gravity; // Gravity effect
+                //ballVelocityX -= 0.5; // Fake friction gound (fix)
+                ballY += ballVelocityY; // Update Y position
+                ballX -= ballVelocityX; // Update X position
+
+                // Check for bounce on the ground
+                if (ballY + ballRadius >= slingshotBaseY) {
+                    ballY = slingshotBaseY - ballRadius; // Prevent going below ground
+                    ballVelocityY = -ballVelocityY * 0.6; // Bounce effect, reverse and reduce
+                    if (Math.abs(ballVelocityY) < 5 && Math.abs(ballVelocityX) < 5) {
+                        resetGame(); // Reset if the ball is just rolling on the platform
+                    }
                 }
-            }
 
-            // Check for top boundary collision
-            if (ballY - ballRadius <= 0) {
-                ballY = ballRadius; // Prevent going out of bounds at the top
-                ballVelocityY = -ballVelocityY * 0.4; // Bounce off the top edge
-            }
+                // Check for top boundary collision
+                if (ballY - ballRadius <= 0) {
+                    ballY = ballRadius; // Prevent going out of bounds at the top
+                    ballVelocityY = -ballVelocityY * 0.4; // Bounce off the top edge
+                }
 
-            // Check for target boundary collision
-            if (Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)) <= (ballRadius)) {
-                score++;
-                console.log("target distance: " + Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)));
-                resetGame();
-            }
+                // Check for target boundary collision
+                if (Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)) <= (ballRadius)) {
+                    score++;
+                    console.log("target distance: " + Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)));
+                    resetGame();
+                }
 
-            // Check for left and right boundary collisions
-            if (ballX + ballRadius >= canvas.width) {
-                ballX = canvas.width - ballRadius; // Prevent going out of bounds on the right
-                ballVelocityX = -ballVelocityX * 0.8; // Bounce off the right edge and slow
-            } else if (ballX - ballRadius <= 0) {
-                ballX = ballRadius; // Prevent going out of bounds on the left
-                ballVelocityX = -ballVelocityX * 0.8; // Bounce off the left edge and slow
+                // Check for left and right boundary collisions
+                if (ballX + ballRadius >= canvas.width) {
+                    ballX = canvas.width - ballRadius; // Prevent going out of bounds on the right
+                    ballVelocityX = -ballVelocityX * 0.8; // Bounce off the right edge and slow
+                } else if (ballX - ballRadius <= 0) {
+                    ballX = ballRadius; // Prevent going out of bounds on the left
+                    ballVelocityX = -ballVelocityX * 0.8; // Bounce off the left edge and slow
+                }
+                requestAnimationFrame(update);
             }
+        
+        } else {
+            ballY = Math.max(mouseY, slingshotBaseY - 35); // Make sure the ball doesn't go above the slingshot when pulling
+            //ballY = mouseY;
+            ballX = mouseX; // Follow that mouse!
         }
-    } else {
-        ballY = Math.max(mouseY, slingshotBaseY - 35); // Make sure the ball doesn't go above the slingshot when pulling
-        //ballY = mouseY;
-        ballX = mouseX; // Follow that mouse!
     }
-    
     //console.log('Velocity X: ' + roundToTwo(ballVelocityX) + ' | Velocity Y: ' + roundToTwo(ballVelocityY) + ' | Ball X: ' + roundToTwo(ballX) + ' | Ball Y: ' + roundToTwo(ballY));
     requestAnimationFrame(update);
 }
