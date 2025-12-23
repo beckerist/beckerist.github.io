@@ -142,6 +142,10 @@ function explodeTarget() {
 }
 
 function drawUI() {
+    // Background
+    ctx.fillStyle = 'lightblue'; // background color    
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
     // Score Board
     const scoreX = 0;
     const scoreY = 0;
