@@ -32,6 +32,12 @@ let targetY = Math.floor(Math.random() * (maxtargetY - mintargetY)) + mintargetY
 let targetDirection = "down";
 let lastTime = 0; 
 
+base_image = new Image();
+base_image.src = '/assets/images/JLsprite.png';
+base_image.onload = function(){
+    ctx.drawImage(base_image, targetX, targetY, 32, 32);
+}
+
 
 // Functions
 function drawSlingshot() {
@@ -112,11 +118,7 @@ function drawTarget2() {
 
 
 function drawTarget() {
-    base_image = new Image();
-    base_image.src = '/assets/images/JLsprite.png';
-    base_image.onload = function(){
-        ctx.drawImage(base_image, targetX, targetY, 32, 32);
-    }
+    ctx.drawImage(base_image, targetX, targetY, 32, 32);
 }
 
 function explodeTarget() {
