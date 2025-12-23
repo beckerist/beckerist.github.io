@@ -92,7 +92,7 @@ function drawHook() {
      };
 }
 
-function drawTarget() {
+function drawTarget2() {
     ctx.beginPath();
     ctx.arc(targetX, targetY, targetRadius, 0, Math.PI * 2);
     ctx.fillStyle = '#c9090999';
@@ -108,6 +108,15 @@ function drawTarget() {
     ctx.fillStyle = '#c9090999';
     ctx.fill();
     ctx.closePath();
+}
+
+
+function drawTarget() {
+    base_image = new Image();
+    base_image.src = '/assets/images/JLsprite.png';
+    base_image.onload = function(){
+        ctx.drawImage(base_image, targetX, targetY, 32, 32);
+    }
 }
 
 function explodeTarget() {
@@ -160,14 +169,6 @@ function drawUI() {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('TY: ' + Math.round(targetY) + '-- TX: ' + Math.round(targetX), debugBoxX + debugBoxWidth / 2, debugBoxY + debugBoxHeight / 2);
-
-    base_image = new Image();
-    base_image.src = '/assets/images/JackLumbersprite.png';
-    base_image.onload = function(){
-        ctx.drawImage(base_image, 0, 0);
-    }
-
-
 }
 
 function resetGame() {
