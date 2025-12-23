@@ -160,6 +160,14 @@ function drawUI() {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('TY: ' + Math.round(targetY) + '-- TX: ' + Math.round(targetX), debugBoxX + debugBoxWidth / 2, debugBoxY + debugBoxHeight / 2);
+
+    base_image = new Image();
+    base_image.src = '/assets/images/JackLumbersprite.png';
+    base_image.onload = function(){
+        ctx.drawImage(base_image, 0, 0);
+    }
+
+
 }
 
 function resetGame() {
