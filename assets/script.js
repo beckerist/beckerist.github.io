@@ -17,7 +17,7 @@ const targetFPS = 60;
 const interval = 1000 / targetFPS; 
 
 // Variables that the program changes
-let version = "0.12n13";
+let version = "0.12n23";
 let isDragging = false;
 let mouseY = 0;
 let mouseX = 0;
