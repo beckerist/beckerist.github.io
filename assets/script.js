@@ -121,13 +121,40 @@ function drawTarget() {
     ctx.drawImage(base_image, targetX, targetY, 32, 32);
 }
 
-function drawDirtPath() {
-    ctx.fillStyle = '#8B4513'; // Dirt color
+function drawDirtPath() {    ctx.fillStyle = '#8B4513'; // Dirt color
     ctx.beginPath();
-    ctx.moveTo(canvas.width / 2, 0); // Start from the top center
-    ctx.lineTo(canvas.width / 4, canvas.height / 2); // Left edge of the path
-    ctx.lineTo(canvas.width * 3 / 4, canvas.height / 2); // Right edge of the path
-    ctx.lineTo(canvas.width / 2, 0); // Close the path back to the start
+    
+    const pathWidth = 25;  // Width of the path
+    let x = 0;  // Start X position
+    let y = 20; // Start just below the top
+
+    // Move to starting point
+    ctx.moveTo(x, y);
+
+    // Draw winding path
+    while (y < (canvas.height / 2)) {
+        // Move right
+        ctx.lineTo(x + 100, y);
+        x += 100;
+        
+        // Turn down
+        y += pathWidth;
+        ctx.lineTo(x, y);
+        
+        // Move right again
+        ctx.lineTo(x + 100, y);
+        x += 100;
+
+        // Turn down again
+        y += pathWidth;
+        ctx.lineTo(x, y);
+    }
+
+    // Final turn left towards the castle
+    ctx.lineTo(x - 60, y + 40); // Adjust to end close to the castle
+    ctx.lineTo(x - 60, canvas.height / 2); // Down towards the castle
+    ctx.lineTo((canvas.width / 2) - 25, canvas.height / 2); // To center where the castle will be
+
     ctx.closePath();
     ctx.fill();
 }
