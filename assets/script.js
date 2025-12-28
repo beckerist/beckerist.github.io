@@ -156,7 +156,6 @@ function drawDirtPath() {    ctx.fillStyle = '#8B4513'; // Dirt color
     ctx.lineTo((canvas.width / 2) - 25, canvas.height / 2); // To center where the castle will be
 
     ctx.closePath();
-    ctx.fill();
 }
 
 function drawCastle() {
