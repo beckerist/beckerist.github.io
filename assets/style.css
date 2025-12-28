@@ -10,7 +10,7 @@ body {
 
 canvas {
     border: 1px solid #2d69a5;
-    background: #b3ce15;
+    background: #ebebdb;
     border-radius: 10px; /* Rounded corners */
     display: block; /* Block display */
     margin: 20px auto; /* Space above and centered horizontally */
