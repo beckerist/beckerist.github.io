@@ -133,27 +133,35 @@ function drawDirtPath() {
 }
 
 function drawCastle() {
+    const castleWidth = 50; // Width of the castle
+    const castleHeight = 40; // Height of the castle
+    const castleX = (canvas.width / 2) - (castleWidth / 2); // Center the castle at the dirt path
+    const castleY = (canvas.height / 2) - castleHeight; // Position above the path
+
+    // Draw the castle body
     ctx.fillStyle = '#A9A9A9'; // Castle color
-    ctx.fillRect(canvas.width / 3, canvas.height / 2, canvas.width / 3, canvas.height / 4); // Main castle building
+    ctx.fillRect(castleX, castleY, castleWidth, castleHeight); // Main castle building
 
     // Draw towers
     ctx.fillStyle = '#B0C4DE'; // Tower color
-    ctx.fillRect(canvas.width / 4, canvas.height / 2 - 40, 30, 40); // Left tower
-    ctx.fillRect(canvas.width * 5 / 12, canvas.height / 2 - 40, 30, 40); // Right tower
+    const towerWidth = 20; // Width of the towers
+    const towerHeight = 30; // Height of the towers
+    ctx.fillRect(castleX - 15, castleY - towerHeight + 5, towerWidth, towerHeight); // Left tower
+    ctx.fillRect(castleX + castleWidth - 5, castleY - towerHeight + 5, towerWidth, towerHeight); // Right tower
 
-    // Add roof
+    // Add roofs
     ctx.fillStyle = '#800000'; // Roof color
     ctx.beginPath();
-    ctx.moveTo(canvas.width / 3, canvas.height / 2);
-    ctx.lineTo(canvas.width / 4 + 15, canvas.height / 2 - 40); // Roof left
-    ctx.lineTo(canvas.width / 4 + 30, canvas.height / 2);
+    ctx.moveTo(castleX, castleY); // Bottom left of roof
+    ctx.lineTo(castleX - 5, castleY - towerHeight + 5); // Left roof peak
+    ctx.lineTo(castleX + 15, castleY); // Bottom middle of roof
     ctx.closePath();
     ctx.fill();
 
     ctx.beginPath();
-    ctx.moveTo(canvas.width * 5 / 12, canvas.height / 2);
-    ctx.lineTo(canvas.width * 5 / 12 + 15, canvas.height / 2 - 40); // Roof right
-    ctx.lineTo(canvas.width * 5 / 12 + 30, canvas.height / 2);
+    ctx.moveTo(castleX + castleWidth, castleY); // Bottom right of roof
+    ctx.lineTo(castleX + castleWidth + 5, castleY - towerHeight + 5); // Right roof peak
+    ctx.lineTo(castleX + castleWidth - 15, castleY); // Bottom middle of roof
     ctx.closePath();
     ctx.fill();
 }
