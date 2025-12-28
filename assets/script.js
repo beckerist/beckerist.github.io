@@ -298,13 +298,14 @@ canvas.addEventListener('mousedown', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouseY = e.clientY - rect.top;
         mouseX = e.clientX - rect.left;
+        console.log("bvX: " + ballVelocityX + " - bvY: " + ballVelocityY);
 });
 
 canvas.addEventListener('mouseup', () => {
     if (isDragging) {
         isDragging = false;
         ballVelocityY = (mouseY - slingshotBaseY) * 2; // Fling back in the opposite speed relative to distance from the start
-        ballVelocityX = (mouseX - slingshotBaseX) / 5; // Adjust the value for smoother left to right movement.
+        ballVelocityX = (mouseX - slingshotBaseX) / 20; // Adjust the value for smoother left to right movement.
         console.log("bvX: " + ballVelocityX + " - bvY: " + ballVelocityY);
     }
 });
