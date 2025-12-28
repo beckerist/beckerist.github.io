@@ -121,6 +121,43 @@ function drawTarget() {
     ctx.drawImage(base_image, targetX, targetY, 32, 32);
 }
 
+function drawDirtPath() {
+    ctx.fillStyle = '#8B4513'; // Dirt color
+    ctx.beginPath();
+    ctx.moveTo(canvas.width / 2, 0); // Start from the top center
+    ctx.lineTo(canvas.width / 4, canvas.height / 2); // Left edge of the path
+    ctx.lineTo(canvas.width * 3 / 4, canvas.height / 2); // Right edge of the path
+    ctx.lineTo(canvas.width / 2, 0); // Close the path back to the start
+    ctx.closePath();
+    ctx.fill();
+}
+
+function drawCastle() {
+    ctx.fillStyle = '#A9A9A9'; // Castle color
+    ctx.fillRect(canvas.width / 3, canvas.height / 2, canvas.width / 3, canvas.height / 4); // Main castle building
+
+    // Draw towers
+    ctx.fillStyle = '#B0C4DE'; // Tower color
+    ctx.fillRect(canvas.width / 4, canvas.height / 2 - 40, 30, 40); // Left tower
+    ctx.fillRect(canvas.width * 5 / 12, canvas.height / 2 - 40, 30, 40); // Right tower
+
+    // Add roof
+    ctx.fillStyle = '#800000'; // Roof color
+    ctx.beginPath();
+    ctx.moveTo(canvas.width / 3, canvas.height / 2);
+    ctx.lineTo(canvas.width / 4 + 15, canvas.height / 2 - 40); // Roof left
+    ctx.lineTo(canvas.width / 4 + 30, canvas.height / 2);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(canvas.width * 5 / 12, canvas.height / 2);
+    ctx.lineTo(canvas.width * 5 / 12 + 15, canvas.height / 2 - 40); // Roof right
+    ctx.lineTo(canvas.width * 5 / 12 + 30, canvas.height / 2);
+    ctx.closePath();
+    ctx.fill();
+}
+
 function explodeTarget() {
 
     ctx.beginPath();
@@ -242,6 +279,8 @@ function update(currentTime) {
         drawBall();
         drawUI();
         moveTarget();
+        drawDirtPath();
+        drawCastle();
         lastTime = currentTime;
 
         if (!isDragging) {
@@ -305,7 +344,7 @@ canvas.addEventListener('mouseup', () => {
     if (isDragging) {
         isDragging = false;
         ballVelocityY = (mouseY - slingshotBaseY) * 2; // Fling back in the opposite speed relative to distance from the start
-        ballVelocityX = (mouseX - slingshotBaseX) / 20; // Adjust the value for smoother left to right movement.
+        ballVelocityX = (mouseX - slingshotBaseX) / 10; // Adjust the value for smoother left to right movement.
         console.log("bvX: " + ballVelocityX + " - bvY: " + ballVelocityY);
     }
 });
