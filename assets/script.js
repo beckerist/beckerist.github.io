@@ -308,13 +308,13 @@ function update(currentTime) {
     const deltaTime = currentTime - lastTime;
     if (deltaTime >= interval) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //drawDirtPath();
+        //drawCastle();
         drawTarget();
         drawSlingshot();
         drawBall();
         drawUI();
         moveTarget();
-        drawDirtPath();
-        drawCastle();
         lastTime = currentTime;
 
         if (!isDragging) {
