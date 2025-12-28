@@ -11,14 +11,23 @@ body {
 canvas {
     border: 1px solid #2d69a5;
     background: #ecb1b1;
+    border-radius: 10px;
+    margin-top: 20px;
     display: block;
-    width: 100%; /* Make canvas responsive(?) */
-    border-radius: 10px; /* Rounded corners */
-    background-color: #ffffff; /* White background */
-    margin-top: 20px; /* Space above */
-    display: block; /* Centering */
     margin-left: auto;
     margin-right: auto;
+    width: 90vw; /* Use viewport width */
+    height: 160vh; /* Use viewport height for verticality */
+    max-width: 600px; /* Limit the maximum width on larger screens */
+    max-height: calc(100vh - 40px); /* Limit height while considering margins */
+    box-sizing: border-box; /* Ensure padding and border are included in total width/height */
+}
+
+@media (max-width: 600px) {
+    canvas {
+        height: 100vh; /* Full height on smaller screens */
+        width: 90vw;   /* Adjust width on mobile */
+    }
 }
 
 .container {

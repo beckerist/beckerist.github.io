@@ -17,7 +17,7 @@ const targetFPS = 60;
 const interval = 1000 / targetFPS; 
 
 // Variables that the program changes
-let version = "0.12n23";
+let version = "0.5.1228";
 let isDragging = false;
 let mouseY = 0;
 let mouseX = 0;
@@ -98,7 +98,7 @@ function drawHook() {
      };
 }
 
-function drawTarget2() {
+function drawSVGTarget() {
     ctx.beginPath();
     ctx.arc(targetX, targetY, targetRadius, 0, Math.PI * 2);
     ctx.fillStyle = '#c9090999';
@@ -304,7 +304,8 @@ canvas.addEventListener('mouseup', () => {
     if (isDragging) {
         isDragging = false;
         ballVelocityY = (mouseY - slingshotBaseY) * 2; // Fling back in the opposite speed relative to distance from the start
-        ballVelocityX = (mouseX - slingshotBaseX) / 20; // Adjust the value for smoother left to right movement.
+        ballVelocityX = (mouseX - slingshotBaseX) / 5; // Adjust the value for smoother left to right movement.
+        console.log("bvX: " + ballVelocityX + " - bvY: " + ballVelocityY);
     }
 });
 
