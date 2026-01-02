@@ -15,9 +15,9 @@ const maxtargetY = 350;
 const mintargetY = 100;
 const targetFPS = 60;
 const interval = 1000 / targetFPS; 
+const version = "0.6.0102";
 
 // Variables that the program changes
-let version = "0.5.1228";
 let isDragging = false;
 let mouseY = 0;
 let mouseX = 0;
@@ -35,7 +35,7 @@ let lastTime = 0;
 base_image = new Image();
 base_image.src = '/assets/images/JLsprite.png';
 base_image.onload = function(){
-    ctx.drawImage(base_image, targetX, targetY, 32, 32);
+    ctx.drawImage(base_image, targetX, targetY, 64, 64);
 }
 
 
@@ -342,6 +342,7 @@ function update(currentTime) {
                 // Check for target boundary collision
                 if (Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)) <= (ballRadius)) {
                     score++;
+                    drawSVGTarget();
                     console.log("target distance: " + Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)));
                     resetGame();
                 }
@@ -378,7 +379,7 @@ canvas.addEventListener('mouseup', () => {
     if (isDragging) {
         isDragging = false;
         ballVelocityY = (mouseY - slingshotBaseY) * 2; // Fling back in the opposite speed relative to distance from the start
-        ballVelocityX = (mouseX - slingshotBaseX) / 10; // Adjust the value for smoother left to right movement.
+        ballVelocityX = (mouseX - slingshotBaseX) / 5; // Adjust the value for smoother left to right movement.
         console.log("bvX: " + ballVelocityX + " - bvY: " + ballVelocityY);
     }
 });
