@@ -19,6 +19,7 @@ const version = "0.6.0102";
 
 // Variables that the program changes
 let isDragging = false;
+let isHit = false;
 let mouseY = 0;
 let mouseX = 0;
 let score = 0;
@@ -310,7 +311,12 @@ function update(currentTime) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         //drawDirtPath();
         //drawCastle();
-        drawTarget();
+        if (isHit) {
+            drawSVGTarget();
+        }
+        else {
+            drawTarget();
+        }
         drawSlingshot();
         drawBall();
         drawUI();
@@ -340,11 +346,15 @@ function update(currentTime) {
                 }
 
                 // Check for target boundary collision
-                if (Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)) <= (ballRadius)) {
+                if (Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)) <= (ballRadius * 1.5)) {
                     score++;
-                    drawSVGTarget();
-                    console.log("target distance: " + Math.sqrt(((ballX - targetX) ** 2) + ((ballY - targetY) ** 2)));
-                    resetGame();
+                    if (isHit) {
+                        isHit = false;
+                        resetGame();
+                    }
+                    else {
+                        isHit = true;
+                    }
                 }
 
                 // Check for left and right boundary collisions
