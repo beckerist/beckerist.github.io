@@ -1,7 +1,5 @@
 html, body {
     display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 0;
     background: linear-gradient(to bottom right, #56708a, #363663);
     font-family: 'Arial', sans-serif;
@@ -13,37 +11,5 @@ canvas {
     background: #ebebdb;
     border-radius: 10px; /* Rounded corners */
     display: block; /* Block display */
-    margin: auto; /* Centered horizontally */
     box-sizing: border-box; /* Include padding and border in total width/height */
-}
-
-.container {
-    position: relative;
-    display: flex;
-    flex-direction: column; /* Arrange children vertically */
-}
-
-.navbar {
-    background-color: #ffcc00; /* Bright yellow navbar */
-}
-
-.navbar-brand button {
-    background-color: #ff5722; /* Orange button */
-    color: #fff; /* White text */
-    border: none; /* No border */
-    padding: 10px 15px; /* Padding around the button */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor for button */
-}
-
-.navbar-brand button:hover {
-    background-color: #e64a19; /* Darker orange on hover */
-}
-
-.nav-link {
-    color: #0056b3; /* Bright blue links */
-}
-
-.nav-link:hover {
-    color: #003580; /* Dark blue on hover */
 }
