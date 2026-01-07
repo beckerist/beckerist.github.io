@@ -21,16 +21,7 @@ canvas {
     box-sizing: border-box; /* Include padding and border in total width/height */
 }
 
-@media (max-width: 600px) {
-    canvas {
-        height: 100vh; /* Full height on smaller screens */
-        width: 90vw;   /* Adjust width on mobile */
-    }
-}
-
 .container {
-    width: 400px; /* Set width for everything containered (is that a word?) */
-    height: 100vh; /* Set height to full screen hopefully */
     position: relative;
     display: flex;
     flex-direction: column; /* Arrange children vertically */
