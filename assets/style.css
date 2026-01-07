@@ -2,8 +2,6 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width:  50%;
-    height: 80%;
     margin: 0;
     background: linear-gradient(to bottom right, #56708a, #363663);
     font-family: 'Arial', sans-serif;

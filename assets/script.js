@@ -258,6 +258,7 @@ function resetGame() {
     ballY = slingshotBaseY - 35; // Start directly at the string
     ballX = slingshotBaseX;
     update();
+    console.log("CW: " + canvas.width + " CH: " + canvas.height);
 }
 
 function resetScore() {
