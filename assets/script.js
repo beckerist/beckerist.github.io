@@ -15,7 +15,7 @@ const maxtargetY = canvas.height * 0.2;
 const mintargetY = canvas.height / 2;
 const targetFPS = 60;
 const interval = 1000 / targetFPS; 
-const version = "0.6.0107";
+const version = "0.6.0107b";
 
 // Variables that the program changes
 let isDragging = false;
