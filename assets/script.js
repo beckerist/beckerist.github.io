@@ -4,8 +4,8 @@ const ctx = canvas.getContext('2d');
 // Settings you can change
 canvas.width  = window.innerWidth;
 canvas.height = window.innerHeight;
-const slingshotBaseX = canvas.width / 3;
-const slingshotBaseY = canvas.height; // Slingshot at the bottom, this all needs to be adjusted to be variable
+const slingshotBaseX = canvas.width / 2;
+const slingshotBaseY = canvas.height * 0.8; // Slingshot at the bottom, this all needs to be adjusted to be variable
 const ballRadius = 30;
 const gravity = 1; // Gravity force
 const targetRadius = 30;
@@ -15,7 +15,7 @@ const maxtargetY = canvas.height * 0.2;
 const mintargetY = canvas.height / 2;
 const targetFPS = 60;
 const interval = 1000 / targetFPS; 
-const version = "0.6.0107b";
+const version = "0.6.0107c";
 
 // Variables that the program changes
 let isDragging = false;
@@ -23,7 +23,7 @@ let isHit = false;
 let mouseY = 0;
 let mouseX = 0;
 let score = 0;
-let ballY = slingshotBaseY - 35; // Start directly at the string
+let ballY = slingshotBaseY; // Start directly at the string
 let ballX = slingshotBaseX;
 let ballVelocityY = 0;
 let ballVelocityX = 0;
@@ -31,7 +31,7 @@ let targetSteps = 0;
 let targetX = Math.floor(Math.random() * (maxtargetX - mintargetX)) + mintargetX;
 let targetY = Math.floor(Math.random() * (maxtargetY - mintargetY)) + mintargetY;
 let targetDirection = "down";
-let lastTime = 0; 
+let lastTime = 0;
 
 base_image = new Image();
 base_image.src = '/assets/images/JLsprite.png';
