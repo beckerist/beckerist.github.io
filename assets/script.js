@@ -2,10 +2,10 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 // Settings you can change
-canvas.width = 400;
-canvas.height = 800;
+canvas.width  = window.innerWidth;
+canvas.height = window.innerHeight;
 const slingshotBaseX = canvas.width / 2;
-const slingshotBaseY = canvas.height - 150; // Slingshot at the bottom
+const slingshotBaseY = canvas.height - 150; // Slingshot at the bottom, this all needs to be adjusted to be variable
 const ballRadius = 30;
 const gravity = 1; // Gravity force
 const targetRadius = 30;
@@ -15,7 +15,7 @@ const maxtargetY = 350;
 const mintargetY = 100;
 const targetFPS = 60;
 const interval = 1000 / targetFPS; 
-const version = "0.6.0102";
+const version = "0.6.0107";
 
 // Variables that the program changes
 let isDragging = false;
