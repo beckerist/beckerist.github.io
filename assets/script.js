@@ -327,7 +327,7 @@ function update(currentTime) {
         if (!isDragging) {
             if (ballVelocityY !== 0 || ballX !== slingshotBaseX) {
                 ballVelocityY += gravity; // Gravity effect
-                //ballVelocityX -= 0.5; // Fake friction gound (fix)
+                ballVelocityX -= 0.05; // Fake friction gound (fix)
                 ballY += ballVelocityY; // Update Y position
                 ballX -= ballVelocityX; // Update X position
 
