@@ -34,7 +34,7 @@ let targetDirection = "down";
 let lastTime = 0;
 
 base_image = new Image();
-base_image.src = '/assets/images/JLsprite.png';
+base_image.src = 'assets/images/JLsprite.png';
 base_image.onload = function(){
     ctx.drawImage(base_image, targetX, targetY, 64, 64);
 }
